@@ -1,0 +1,33 @@
+<div class="form-container">
+    <button class="back-button" [routerLink]="['/admindashboard/usermanagement']">Back to User Management</button>
+    <h2>Create User</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" [(ngModel)]="user.fullName" required>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="user.username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+      </div>
+      <div class="form-group">
+        <label for="designation">Designation</label>
+        <select id="designation" name="designation" [(ngModel)]="user.designation" required>
+          <option value=".Net C#">.Net C#</option>
+          <option value="Java Developer">Java Developer</option>
+          <option value="Python Data Engineer">Python Data Engineer</option>
+          <!-- Add more roles as needed -->
+        </select>
+      </div>
+      <button type="submit" [disabled]="!userForm.form.valid" >Create User</button>
+    </form>
+  </div>
+  

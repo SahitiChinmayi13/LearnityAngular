@@ -1,0 +1,41 @@
+
+    <!-- Course Name and Description -->
+    <div class="course-info">
+        <h1>{{ course.title }}</h1>
+        <p>{{ course.description }}</p>
+      </div>
+    
+      <!-- Submit Feedback Header -->
+      <div class="feedback-header">
+        <h2>Submit Feedback</h2>
+      </div>
+    
+      <!-- Rating Section -->
+      <div class="rating-section">
+        <div class="stars">
+          <span class="star" (click)="setRating(1)" [class.filled]="rating >= 1">☆</span>
+          <span class="star" (click)="setRating(2)" [class.filled]="rating >= 2">☆</span>
+          <span class="star" (click)="setRating(3)" [class.filled]="rating >= 3">☆</span>
+          <span class="star" (click)="setRating(4)" [class.filled]="rating >= 4">☆</span>
+          <span class="star" (click)="setRating(5)" [class.filled]="rating >= 5">☆</span>
+        </div>
+        <p class="rating-text">Rating: {{ feedback.rating }}</p>
+      </div>
+    
+      <!-- Brief Review -->
+      <div class="review-section">
+        <textarea placeholder="Write a brief review..." [(ngModel)]="feedback.description" rows="4" class="form-control"></textarea>
+      </div>
+    
+      <!-- Feedback Input Fields -->
+      <div class="input-section">
+        <input type="text" placeholder="Your Name" class="form-control">
+        <input type="email" placeholder="Your Email"  class="form-control">
+      </div>
+    
+      <!-- Submit Button -->
+      <div class="submit-button">
+        <button (click)="submitFeedback(feedback)">Submit Feedback</button>
+      </div>
+  
+    

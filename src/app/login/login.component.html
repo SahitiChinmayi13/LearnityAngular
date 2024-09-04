@@ -1,0 +1,37 @@
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+      <h1>Welcome to the LMS Portal</h1>
+      <p>Please sign in to access your courses and learning materials.</p>
+      <form #loginForm="ngForm" class="login-form">
+        <label for="username">Email or Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter your email or username"
+          [(ngModel)]="username"
+          required
+        />
+  
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+          required
+        />
+  
+        <button type="submit"  (click)="onLogin()">Sign In</button>
+      </form>
+      <p *ngIf="loginError">{{ loginError }}</p>
+    </div>
+  
+    <!-- Right Section -->
+    <div class="right-section">
+      <img src="/assets/hero_image_1.png" alt="Login Image" />
+    </div>
+  </div>
+  

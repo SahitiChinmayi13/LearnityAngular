@@ -1,0 +1,42 @@
+<div class="progress-tracking-container">
+    <div class="header">
+      <h2>Progress tracking</h2>
+    </div>
+    
+    <div class="stats-cards">
+      <div class="stats-card">
+        <h3>Total no. of students</h3>
+        <p>{{totalUsers}}</p>
+      </div>
+      <div class="stats-card">
+        <h3>Total no. of courses</h3>
+        <p>{{totalCourses}}</p>
+      </div>
+      <div class="stats-card">
+        <h3>Total no. of feedback</h3>
+        <p>{{feedbacklength}}</p>
+      </div>
+    </div>
+  
+    <div class="individual-tracking">
+      <h3>Individual tracking</h3>
+      <div class="search-container">
+        <input type="number" placeholder="Search student by ID" class="search-input" [(ngModel)]="id">
+        <button class="search-button" (click)="search(id)">
+            <i class="fas fa-search"></i> Search
+          </button>
+              </div>
+    <div *ngIf=(boo)>
+      <div class="student-card">
+        <img src="assets/student-avatar.png" alt="Student Avatar" class="student-avatar">
+        <div class="student-info">
+          <h4>{{user.fullName}}</h4>
+          <p>{{user.role}}</p>
+            <h3>{{course.title}} : {{course.description}}</h3>
+          <p>Status : {{progress.status}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  

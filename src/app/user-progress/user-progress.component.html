@@ -1,0 +1,30 @@
+<div class="progress-container">
+  <!-- Course Details -->
+  <div class="course-details">
+    <h2>Course Details</h2>
+    <p><strong>Course Name:</strong> {{ course.title }}</p>
+    <p><strong>Description:</strong> {{ course.description }}</p>
+  </div>
+
+  <!-- Information Boxes -->
+  <div class="info-boxes">
+    <div class="info-box">
+      <h3>Course Duration</h3>
+      <p>{{ course.duration }} hours</p>
+    </div>
+    <div class="info-box">
+      <h3>Modules Completed</h3>
+      <p>{{ completedModules }}/{{ course.module }}</p>
+    </div>
+    
+  </div>
+
+  <!-- Circular Progress Chart -->
+  <div class="progress-chart">
+    <svg class="circular-chart" viewBox="0 0 100 100">
+      <circle class="background" cx="50" cy="50" r="45"></circle>
+      <circle class="progress" cx="50" cy="50" r="45"></circle>
+      <text class="percentage" x="50%" y="50%" transform="translate(0, 4)" text-anchor="middle">0%</text>
+    </svg>
+  </div>
+</div>

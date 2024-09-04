@@ -1,0 +1,73 @@
+.course-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.course-card {
+    background-color: #dee7e7; /* White background for the card */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow for a dimmer glow */
+    border: 2px solid #EEFFFF; /* Border color matching the background */
+    position: relative; /* Allows positioning of the button */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.course-card h3 {
+    margin-top: 0;
+    font-family: 'Arial', sans-serif; /* Update font family */
+    font-size: 20px;
+    color: #333; /* Text color for the course title */
+}
+
+.course-card p {
+    color: #666; /* Grey text color */
+}
+
+.course-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    margin-bottom: 15px; /* Space between info and button */
+}
+
+.course-info .icon {
+    font-size: 16px; /* Adjust icon size */
+    color: #007bff; /* Color for the icons */
+}
+
+.course-info .modules,
+.course-info .time {
+    color: #555; /* Updated text color for modules and time */
+}
+
+.course-info .time {
+    display: flex;
+    align-items: center;
+}
+
+.course-info .time i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.start-button {
+    background-color: #EEFFFF; /* Background color matching the content */
+    border: none;
+    border-radius: 5px;
+    color: #333; /* Text color for the button */
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #cce5ff; /* Slightly darker shade for hover effect */
+}

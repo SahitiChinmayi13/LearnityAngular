@@ -1,0 +1,36 @@
+
+
+<div class="container">
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+      <div class="user-details">
+        <img src="assets/avatar.webp" alt="User Avatar" class="avatar" />
+        <span class="user-name">{{name}}</span>
+      </div>
+    </nav>
+  
+    <!-- Main Content Area with Sidebar -->
+    <div class="main-content">
+      <!-- Left Sidebar -->
+      <aside class="sidebar">
+        <ul class="menu">
+          <li>
+            <a routerLink="courses" routerLinkActive="active" style="color: #057a87;">Courses</a>
+          </li>
+          <li>
+            <a routerLink="progress" routerLinkActive="active" style="color: #057a87;">Progress</a>
+          </li>
+        </ul>
+        <!-- Log Out Button -->
+        <button class="logout-button" (click)="logout()" [routerLink]="['']">Log Out</button>
+      </aside>
+  
+      <!-- Center Content -->
+      <div class="content">
+        <!-- Dynamic Content based on Route -->
+         
+        <router-outlet>
+        </router-outlet>
+      </div>
+    </div>
+  </div>

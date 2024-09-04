@@ -1,0 +1,116 @@
+/* General styles remain the same */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Top Navigation Bar */
+  .top-nav {
+    background-color: white; /* Updated color */
+    color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  /* User Details */
+  .user-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-name {
+    font-size: 16px;
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  /* Left Sidebar */
+  .sidebar {
+    width: 100px; /* Decreased size */
+    background-color: white; /* Updated color */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes the logout button to the bottom */
+    box-shadow: none; /* Remove shadow from the top of the sidebar */
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-bottom: 10px;
+  }
+  
+  .menu a {
+    color: #333; /* Text color suitable against the background */
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+  /* Hover and Active States */
+  .menu a:hover,
+  .menu a.active {
+    background-color: #EEFFFF; /* Background color matching the page content */
+    color: #333; /* Text color when active */
+    padding-left: 15px;
+    border-left: 4px solid #007bff; /* Highlight border */
+  }
+  
+  /* Log Out Button */
+  .logout-button {
+    margin-top: auto; /* Pushes the button to the bottom of the sidebar */
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000; /* Black color for the log out button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: rgba(6, 73, 79); /* Darker red on hover */
+  }
+  
+  /* Center Content Area */
+  .content {
+    flex: 1;
+    padding: 20px;
+    background-color: #EEFFFF; /* Updated color */
+  }
+  .introduction {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff; /* White background for the introduction section */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .introduction h1 {
+    color: #007bff; /* Primary color for headings */
+  }
+  
+  .introduction p {
+    color: #333; /* Dark color for text */
+  }
+  

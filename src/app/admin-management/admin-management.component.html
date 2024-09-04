@@ -1,0 +1,20 @@
+<div class="course-management-container">
+    <div class="header">
+      <h2>Course management</h2>
+      <button class="add-course-button" [routerLink]="['/admindashboard/addcourse']">+ Add course</button>
+    </div>
+    
+    <div class="course-cards">
+      <div class="course-card" *ngFor="let course of courses">
+        <p class="course-id">#{{ course.course_id }}</p>
+        <h3>{{ course.title}}</h3>
+        <h5>{{course.description}}</h5>
+        <p>{{ course.duration }} • {{ course.module }} modules</p>
+        <div class="card-buttons">
+          <button class="delete-button" (click)="delete(course.course_id)">Delete</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  

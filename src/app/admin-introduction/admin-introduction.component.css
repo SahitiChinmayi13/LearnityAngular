@@ -1,0 +1,52 @@
+/* Intro section styling */
+.dashboard-intro {
+    background-color: #f0fbff; /* Light background matching the overall theme */
+    padding: 40px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Space below the intro */
+}
+ 
+/* Text section styling */
+.intro-text {
+    max-width: 60%; /* Limit the text width for better readability */
+}
+ 
+.dashboard-intro h1 {
+    color: #057a87;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+ 
+.dashboard-intro p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px; /* Space between paragraphs */
+}
+ 
+.dashboard-intro ul {
+    list-style-type: disc; /* Bulleted list */
+    margin-left: 20px; /* Indentation for the list */
+    margin-bottom: 15px; /* Space below the list */
+}
+ 
+.dashboard-intro li {
+    font-size: 16px; /* Slightly smaller font for list items */
+    margin-bottom: 10px; /* Space between list items */
+}
+ 
+/* Image styling */
+.intro-image {
+    max-width: 35%; /* Make sure the image doesn't overwhelm the text */
+}
+ 
+.intro-image img {
+    width: 100%; /* Ensure the image scales properly */
+    border-radius: 10px; /* Match the rounded corners of the section */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}

@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="/assets/logo.jpg" alt="Logo">
+            <span class="site-name">LearnMore</span>
+        </div>
+        <nav>
+            <ul>
+                <li routerLink="/admindashboard/usermanagement" routerLinkActive="active"><i class="fas fa-users"></i> User management</li>
+                <li routerLink="/admindashboard/coursemanagement" routerLinkActive="active"><i class="fas fa-book"></i> Course management</li>
+                <li routerLink="/admindashboard/progressmanagement" routerLinkActive="active"><i class="fas fa-chart-line"></i> Progress tracking</li>
+                <li routerLink="/admindashboard/feedbackmanagement" routerLinkActive="active"><i class="fas fa-comment-alt"></i> Feedback management</li>
+            </ul>
+        </nav>
+        <button class="logout-button" routerLink="/">Logout</button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Top Navigation Bar -->
+        <nav class="top-nav">
+            <div class="user-info">
+                <i class="fas fa-bell"></i>
+                <div class="user-details">
+                    <span>{{ userDetails.fullName }}</span>
+                    <small>{{ userDetails.designation }}</small>
+                    <img src="/assets/avatar.webp" alt="User Avatar" class="avatar">
+                </div>
+            </div>
+        </nav>
+
+        <!-- Router Outlet for Dynamic Content -->
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

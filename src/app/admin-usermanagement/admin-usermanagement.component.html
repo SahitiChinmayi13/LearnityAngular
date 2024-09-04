@@ -1,0 +1,48 @@
+<!-- Main Content -->
+<div class="main-content">
+    <div class="header">
+        <div class="header-left">
+            <h2>User management</h2>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-bell"></i>
+        </div>
+    </div>
+
+    <!-- User Management Table -->
+    <div class="table-container">
+        <div class="filter-section">
+            <button class="filter-button" [routerLink]="['/admindashboard/finduser']"><i class="fas fa-filter"></i> Find by id</button>
+            <button class="add-user-button" [routerLink]="['/admindashboard/adduser']">+ Add user</button>
+        </div>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>USER ID</th>
+                    <th>FULLNAME</th>
+                    <th>USERNAME</th>
+                    <th>EMAIL</th>
+                    <th>DESIGNATION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of paginatedUsers">
+                    <td>{{user.id}}</td>
+                    <td>{{ user.fullName }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.designation }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-button" (click)="prevPage()" [disabled]="currentPage === 0">&lt;</button>
+            <button class="page-button" (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= users.length">&gt;</button>
+        </div>
+    </div>
+    <!-- <div class="fetch-button-container">
+        <button class="fetch-button" (click)="fetch()">Fetch All Users</button>
+    </div> -->
+</div>
