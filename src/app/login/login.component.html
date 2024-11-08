@@ -1,37 +1,45 @@
 <div class="container">
-    <!-- Left Section -->
-    <div class="left-section">
-      <h1>Welcome to the LMS Portal</h1>
-      <p>Please sign in to access your courses and learning materials.</p>
-      <form #loginForm="ngForm" class="login-form">
-        <label for="username">Email or Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter your email or username"
-          [(ngModel)]="username"
-          required
-        />
-  
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          [(ngModel)]="password"
-          required
-        />
-  
-        <button type="submit"  (click)="onLogin()">Sign In</button>
-      </form>
-      <p *ngIf="loginError">{{ loginError }}</p>
+  <!-- Left Section (Dynamic Sliding Content) -->
+  <!-- <div class="left-section">
+    <div class="slide-content">
+      <h2>Data Science</h2>
+      <p>Start your journey in Data Science, with real-world projects and hands-on learning.</p>
+      <img src="assets/data-science-image.png" alt="Data Science Image" />
     </div>
-  
-    <!-- Right Section -->
-    <div class="right-section">
-      <img src="/assets/hero_image_1.png" alt="Login Image" />
+    <div class="slide-content">
+      <h2>Java Programming</h2>
+      <p>Master Java and build powerful applications with our comprehensive learning path.</p>
+      <img src="assets/java-image.png" alt="Java Image" />
     </div>
+  </div> -->
+
+  <!-- Right Section (Login Form) -->
+  <div class="right-section">
+    <h1>Welcome to Learnity</h1>
+    <p>Please sign in to access your courses and learning materials.</p>
+    <form #loginForm="ngForm" class="login-form">
+      <label for="username">Email or Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Enter your email or username"
+        [(ngModel)]="username"
+        required
+      />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Enter your password"
+        [(ngModel)]="password"
+        required
+      />
+
+      <button type="submit" (click)="onLogin()">Sign In</button>
+    </form>
+    <p *ngIf="loginError">{{ loginError }}</p>
   </div>
-  
+</div>
