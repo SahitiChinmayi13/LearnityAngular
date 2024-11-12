@@ -1,116 +1,197 @@
-/* General styles remain the same */
+/* Your existing styles */
 .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  /* Top Navigation Bar */
-  .top-nav {
-    background-color: white; /* Updated color */
-    color: #333;
-    padding: 10px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  /* User Details */
-  .user-details {
-    display: flex;
-    align-items: center;
-  }
-  
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .user-name {
-    font-size: 16px;
-  }
-  
-  /* Main Content Area */
-  .main-content {
-    display: flex;
-    flex: 1;
-  }
-  
-  /* Left Sidebar */
-  .sidebar {
-    width: 100px; /* Decreased size */
-    background-color: white; /* Updated color */
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes the logout button to the bottom */
-    box-shadow: none; /* Remove shadow from the top of the sidebar */
-  }
-  
-  .menu {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .menu li {
-    margin-bottom: 10px;
-  }
-  
-  .menu a {
-    color: #333; /* Text color suitable against the background */
-    text-decoration: none;
-    font-size: 16px;
-    display: block;
-    padding: 5px 10px;
-    border-radius: 4px;
-  }
-  
-  /* Hover and Active States */
-  .menu a:hover,
-  .menu a.active {
-    background-color: #EEFFFF; /* Background color matching the page content */
-    color: #333; /* Text color when active */
-    padding-left: 15px;
-    border-left: 4px solid #007bff; /* Highlight border */
-  }
-  
-  /* Log Out Button */
-  .logout-button {
-    margin-top: auto; /* Pushes the button to the bottom of the sidebar */
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #000; /* Black color for the log out button */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .logout-button:hover {
-    background-color: rgba(6, 73, 79); /* Darker red on hover */
-  }
-  
-  /* Center Content Area */
-  .content {
-    flex: 1;
-    padding: 20px;
-    background-color: #EEFFFF; /* Updated color */
-  }
-  .introduction {
-    text-align: center;
-    padding: 20px;
-    background-color: #ffffff; /* White background for the introduction section */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .introduction h1 {
-    color: #007bff; /* Primary color for headings */
-  }
-  
-  .introduction p {
-    color: #333; /* Dark color for text */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.menu-text {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px; /* Moved logo further to the right */
+  margin-right: 10px; /* Add space between the logo and search bar */
+}
+
+.logo-img {
+  width: 120px; /* Increased size of logo */
+  height: 40px;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  flex: 2;
+  margin-left: -110px;
+}
+
+.search-bar input {
+  width: 50%; /* Search bar width */
+  padding: 6px;
+  font-size: 14px;
+  border: none;
+  border-radius: 25px;
+  background-color: #444;
+  color: white;
+}
+
+.search-bar input::placeholder {
+  color: #bbb;
+}
+
+/* User Details */
+.user-details {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.user-name {
+  font-size: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+/* Dropdown */
+.user-dropdown {
+  position: absolute;
+  right: 0;
+  top: 55px; /* Adjusted for better visibility */
+  background-color: white;
+  border-radius: 5px;
+  display: none; /* Initially hidden */
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+}
+
+.user-details:hover .user-dropdown {
+  display: block; /* Show dropdown when hovering over the user details */
+}
+
+/* Styling for dropdown buttons */
+.user-dropdown ul li a {
+  display: block;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: #333; /* Default color */
+}
+
+/* Button styles for My Profile and View Certifications */
+.profile-button, .certifications-button {
+  background-color: #f0f0f0; /* Light grey */
+}
+
+.profile-button:hover, .certifications-button:hover {
+  background-color: #e0e0e0; /* Slightly darker grey on hover */
+}
+
+/* Red Logout button */
+.logout-button {
+  background-color: #ff4d4d; /* Red color */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #ff6666; /* Lighter red on hover */
+}
+
+.side-menu {
+  position: absolute;
+  top: 50px; /* Ensure the side menu opens below the hamburger */
+  left: -250px;
+  background-color: #333;
+  width: 250px;
+  height: 100%;
+  transition: left 0.3s ease;
+  z-index: 10;
+}
+
+.side-menu.active {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu ul li a {
+  color: white;
+  padding: 15px;
+  display: block;
+  text-decoration: none;
+}
+
+.side-menu ul li a:hover {
+  background-color: #444;
+}
+
+.content {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+/* Center the Welcome message in the page and move it up */
+.introduction {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  height: 70vh;            /* Reduce the height to move it up */
+  text-align: center;      /* Center the text */
+  margin-top: -200px;       /* Move the Welcome message up */
+}
+
+h1 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+}

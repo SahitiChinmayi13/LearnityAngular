@@ -1,50 +1,61 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 import { UserService } from '../user.service';
 import { User } from '../User';
-import { CourseService } from '../course.service';
 import { AdminService } from '../admin.service';
-import { LoginComponent } from '../login/login.component';
+import { CourseService } from '../course.service';
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [RouterModule,RouterOutlet],
+  imports: [RouterModule, RouterOutlet, CommonModule], // Add RouterModule and RouterOutlet here
   templateUrl: './user-dashboard.component.html',
-  styleUrl: './user-dashboard.component.css'
+  styleUrls: ['./user-dashboard.component.css']
 })
-export class UserDashboardComponent {
+export class UserDashboardComponent implements OnInit {
   title = 'Cap_project';
   username: string = '';
-  name: String =''
-  user:User=new User()
-  constructor(private adminService: AdminService,private courseService:CourseService, private logins:UserService) {
-    // Get the username from the service
+  name: String = ''; // Name of the user
+  user: User = new User();
+  sideMenuOpen: boolean = false;
+  showWelcomeMessage: boolean = true; // Controls the visibility of the Welcome message
+
+  constructor(
+    private adminService: AdminService,
+    private courseService: CourseService,
+    private logins: UserService,
+    private router: Router
+  ) {
     this.username = this.logins.getUsername();
-    //console.log(this.username)
-    this.findUser(this.username)
-    
+    this.findUser(this.username);
   }
- 
- 
-  findUser(username:string){
-    //console.log("username: ", username)
-    this.adminService.getUserByUserName(username).subscribe(data=>{
-      this.user=data
+
+  ngOnInit(): void {
+    // Subscribe to router events and check the current URL
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Show the welcome message only on the dashboard
+        this.showWelcomeMessage = event.urlAfterRedirects === '/user-dashboard';
+      }
+    });
+  }
+
+  toggleSideMenu() {
+    this.sideMenuOpen = !this.sideMenuOpen;
+  }
+
+  findUser(username: string) {
+    // Fetch user data based on the username
+    this.adminService.getUserByUserName(username).subscribe(data => {
+      this.user = data;
       this.name = data.fullName;
-      console.log(this.user)
       this.adminService.setUser(this.user);
-      this.findCourseById(this.user.id)
-    })
-  }
-  findCourseById(id:Number){
-    this.adminService.getCourseByUserId(id).subscribe((data)=>{
-      console.log(data)
-    })
-  }
-  logout(){
-
+    });
   }
 
+  logout() {
+    // Add logic for logout if needed
+  }
 }

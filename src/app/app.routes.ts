@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { UserIntroComponent } from './user-intro/user-intro.component';
+// import { UserIntroComponent } from './user-intro/user-intro.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserCourseComponent } from './user-course/user-course.component';
 import { UserProgressComponent } from './user-progress/user-progress.component';
@@ -22,7 +22,7 @@ export const routes: Routes = [
     {path:'login',component:LoginComponent},
     {path:'userdashboard',component:UserDashboardComponent,
         children:[
-            {path:"",component:UserIntroComponent},
+            // {path:"",component:UserIntroComponent},
             {path:"courses",component:UserCourseComponent},
             {path:"progress",component:UserProgressComponent},
             {path:"usercoursecontent",component:UserCourseContentComponent},

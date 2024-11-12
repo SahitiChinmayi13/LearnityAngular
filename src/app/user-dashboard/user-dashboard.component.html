@@ -1,36 +1,53 @@
+<!-- Top Navigation Bar -->
+<nav class="top-nav">
+  <!-- Hamburger Menu and 'MENU' Text -->
+  <div class="hamburger-menu" (click)="toggleSideMenu()">
+    &#9776; <!-- Hamburger Icon -->
+    <span class="menu-text">MENU</span>
+  </div>
 
+  <!-- Logo placed between MENU and Search Bar -->
+  <div class="logo">
+    <img src="assets/finallogo.png" alt="Logo" class="logo-img" /> <!-- Replace with your actual logo file -->
+  </div>
 
-<div class="container">
-    <!-- Top Navigation Bar -->
-    <nav class="top-nav">
-      <div class="user-details">
-        <img src="assets/avatar.webp" alt="User Avatar" class="avatar" />
-        <span class="user-name">{{name}}</span>
-      </div>
-    </nav>
-  
-    <!-- Main Content Area with Sidebar -->
-    <div class="main-content">
-      <!-- Left Sidebar -->
-      <aside class="sidebar">
-        <ul class="menu">
-          <li>
-            <a routerLink="courses" routerLinkActive="active" style="color: #057a87;">Courses</a>
-          </li>
-          <li>
-            <a routerLink="progress" routerLinkActive="active" style="color: #057a87;">Progress</a>
-          </li>
-        </ul>
-        <!-- Log Out Button -->
-        <button class="logout-button" (click)="logout()" [routerLink]="['']">Log Out</button>
-      </aside>
-  
-      <!-- Center Content -->
-      <div class="content">
-        <!-- Dynamic Content based on Route -->
-         
-        <router-outlet>
-        </router-outlet>
-      </div>
+  <!-- Search Bar in the middle -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." />
+  </div>
+
+  <!-- User Avatar and Username on the right -->
+  <div class="user-details">
+    <img src="assets/avatar.webp" alt="User Avatar" class="avatar" />
+    <span class="user-name">{{ name }}</span>
+    <!-- User Dropdown (appears only on hover) -->
+    <div class="user-dropdown">
+      <ul>
+        <li><a href="#" class="profile-button">My Profile</a></li>
+        <li><a href="#" class="certifications-button">View Certifications</a></li>
+        <!-- Log Out Button with Angular's RouterLink for navigation -->
+        <li><a class="logout-button" routerLink="/login" routerLinkActive="active">Logout</a></li>
+      </ul>
     </div>
   </div>
+</nav>
+
+<!-- Main Content Area (where the routed component will appear) -->
+<div class="content">
+  <!-- Conditional display for Welcome Message -->
+  <div class="introduction" *ngIf="showWelcomeMessage">
+    <h1>Welcome {{ name }}!</h1>
+  </div>
+  <!-- This is where routed components will appear -->
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- Side Menu (hidden initially) -->
+<div class="side-menu" [ngClass]="{'active': sideMenuOpen}">
+  <ul>
+    <!-- Updated routes for Courses and Progress -->
+    <li><a routerLink="courses" routerLinkActive="active">Courses</a></li>
+    <li><a routerLink="progress" routerLinkActive="active">Progress</a></li>
+  </ul>
+</div>

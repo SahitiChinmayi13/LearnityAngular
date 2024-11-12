@@ -4,37 +4,45 @@ body, html {
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow: hidden; /* Prevents scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     font-family: Arial, sans-serif;
 }
 
-/* Header styling */
+/* Header styling (Nav Bar) */
 header {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 40px;
-    position: absolute;
+    justify-content: space-between; /* Space out logo and nav items */
+    align-items: center; /* Vertically align the items */
+    padding: 20px 40px; /* Increased padding for a longer navbar */
+    position: fixed; /* Fix the nav bar to the top */
     top: 0;
     left: 0;
     z-index: 10;
+    width: 100%; /* Ensure the header spans the full width */
+    background-color: #000; /* Set navbar color to black */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add a slight shadow for separation */
+    margin: 0; /* Remove margin to eliminate the white line */
+    border-bottom: none; /* Ensure no border appears between navbar and content */
 }
 
 /* Logo and site name styling */
 .logo {
     display: flex;
     align-items: center;
-    margin-bottom: 30px; /* Adds space between logo and navigation links */
+    margin-bottom: 0;
 }
-
+ 
 .logo img {
-    height: 60px; /* Adjust the size of the logo */
+    height: 80px; /* Increase height for a bigger logo */
+    width: auto;
+    min-width: 80px;
     margin-right: 15px;
 }
 
+
 .site-name {
-    font-size: 32px;
-    color: #0b6eb1;
+    font-size: 28px; /* Slightly larger font size for the site name */
+    color: #0b6eb1; /* Change logo text color to a blue shade */
     font-weight: bold;
 }
 
@@ -42,59 +50,87 @@ header {
 .nav-links {
     list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 20px; /* Space between navigation items */
+    gap: 30px; /* Increase the gap between navigation items */
+    margin-left: -20px; /* Move the entire navigation block slightly to the left */
 }
 
-/* Increased space between logo and first navigation item */
+/* Navigation item styling */
 .nav-item {
     position: relative;
-    margin-top: 15px; /* Adds a bit more spacing between each nav item */
+    margin-top: 5px;
+    margin-right: 20px; /* Adds a bit more spacing between each nav item */
 }
 
-/* Sidebar link styles */
+/* Apply the desired font to all nav links */
 .nav-link {
-    color: #fff;
-    font-size: 20px;
+    color: #fff; /* Change link color to white */
+    font-size: 18px;
     text-decoration: none;
     position: relative;
     font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif; /* Set your desired font */
+    margin-left: -10px;
+    padding: 10px 20px; /* Add padding to create space inside the box */
+    background-color: #000; /* Set background color to black */
+    border-radius: 25px; /* Smooth edges */
+    border: 2px solid #0b6eb1; /* Add a border with blue color */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
-/* Dropdown content positioning */
+/* Hover effect for the nav links */
+.nav-link:hover {
+    background-color: #057a87; /* Change the background color on hover */
+    color: white; /* Change text color on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Dropdown content styling */
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 10px; /* Position it slightly lower */
-    left: 110%; /* Position the dropdown content slightly to the right of the nav link */
+    top: 35px; /* Position it slightly lower to align with the nav item */
+    left: 0; /* Align dropdown to the left of the nav item */
     background: rgba(255, 255, 255, 0.95);
     color: #333;
     padding: 20px;
     border-radius: 8px;
-    max-width: 250px;
+    width: 300px;
+    max-height: 400px;
     font-size: 16px;
     line-height: 1.5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border: 1px solid #ddd;
+    overflow-y: auto;
     white-space: normal;
+    z-index: 20;
+    transition: transform 0.3s ease; /* Smooth transition when moving */
 }
 
 /* Arrow style for the dropdown box */
 .dropdown-content::before {
     content: "";
     position: absolute;
-    top: 20px; /* Move the arrow lower */
-    left: -10px; /* Positions the arrow on the left side of the box */
+    top: -8px; /* Align the arrow to the top of the dropdown */
+    left: 20px; /* Position the arrow slightly towards the center */
     width: 0;
     height: 0;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-    border-right: 8px solid rgba(255, 255, 255, 0.95); /* Match the box color */
+    border-left: 8px solid rgba(255, 255, 255, 0.95); /* Match the box color */
 }
 
 /* Show dropdown content on hover */
 .nav-item:hover .dropdown-content {
     display: block;
+    left: 0;
+    transform: translateX(0); /* Reset any shift on hover */
+}
+
+/* Prevent overflow of dropdown */
+.nav-item:hover .dropdown-content {
+    left: auto; /* Auto calculate the left */
+    right: 0; /* Position the dropdown to the right side */
+    max-width: calc(100vw - 20px); /* Ensure the dropdown doesn't overflow the viewport */
 }
 
 /* Background image styling */
@@ -109,6 +145,9 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
+    flex-direction: column; /* Stack content vertically */
+    margin-top: 80px; /* Push the content down to start below the nav bar */
+    padding-top: 0; /* Ensure there's no padding pushing content down */
 }
 
 /* Overlay for dark effect */
@@ -132,21 +171,49 @@ header {
     max-width: 600px;
     font-size: 28px;
     font-weight: bold;
-    padding-left: 30px; /* Shift content slightly to the right */
+    padding-left: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Shift content slightly to the right */
+    opacity: 0; /* Initially hide the content */
+    transform: translateY(20px); /* Start position below */
+    animation: slideUp 1s ease-out forwards 0.5s; /* Animate the content */
+}
+
+/* Styling for the login section */
+.login-section {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Adjust the distance from the text above */
+    position: relative;
+    z-index: 2;
+    opacity: 0; /* Initially hide the login button */
+    transform: translateY(20px); /* Start position below */
+    animation: slideUp 1s ease-out forwards 1s; /* Animate the login button */
 }
 
 /* Login button styling */
 .login-button {
-    background-color: #0b6eb1;
+    background: linear-gradient(135deg, #3498db, #057a87);
     color: #fff;
-    padding: 10px 25px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    outline: none;
+    font-weight: 600;
 }
 
+/* Hover effect for the login button */
 .login-button:hover {
-    background-color: #057a87;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyframe animation for sliding up */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

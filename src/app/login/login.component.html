@@ -1,45 +1,39 @@
 <div class="container">
-  <!-- Left Section (Dynamic Sliding Content) -->
-  <!-- <div class="left-section">
-    <div class="slide-content">
-      <h2>Data Science</h2>
-      <p>Start your journey in Data Science, with real-world projects and hands-on learning.</p>
-      <img src="assets/data-science-image.png" alt="Data Science Image" />
-    </div>
-    <div class="slide-content">
-      <h2>Java Programming</h2>
-      <p>Master Java and build powerful applications with our comprehensive learning path.</p>
-      <img src="assets/java-image.png" alt="Java Image" />
-    </div>
-  </div> -->
+  <!-- Background Video -->
+  <video autoplay muted loop class="background-video">
+    <source src="assets/bgvideo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-  <!-- Right Section (Login Form) -->
-  <div class="right-section">
+  <!-- Login Form Section -->
+  <div class="login-section">
     <h1>Welcome to Learnity</h1>
     <p>Please sign in to access your courses and learning materials.</p>
     <form #loginForm="ngForm" class="login-form">
       <label for="username">Email or Username:</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Enter your email or username"
-        [(ngModel)]="username"
-        required
-      />
-
+      <div class="input-container">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter your email or username"
+          [(ngModel)]="username"
+          required
+        />
+      </div>
       <label for="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Enter your password"
-        [(ngModel)]="password"
-        required
-      />
-
+      <div class="input-container">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+          required
+        />
+      </div>
       <button type="submit" (click)="onLogin()">Sign In</button>
     </form>
-    <p *ngIf="loginError">{{ loginError }}</p>
+    <p *ngIf="loginError" class="error-message">{{ loginError }}</p>
   </div>
 </div>

@@ -1,58 +1,117 @@
-/* Container takes full height of the screen */
-.container {
-  display: flex;
-  justify-content: space-between;
-  height: 100vh;
-  position: relative;
-  background: url('/assets/bgimageefor.jpg') no-repeat center center/cover;
-  filter: brightness(0.8) contrast(1.2); /* Adjust image clarity if needed */
-}
-
-/* Right section (login form) */
-.right-section {
+/* Background Video Styling */
+.background-video {
   position: absolute;
-  top: 50%;
-  right: 50px; /* Adjust position from right side */
-  transform: translateY(-50%); /* Vertically center the login form */
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.4); /* Transparency to show background image */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional shadow for form */
-  width: 350px; /* Width of the login form */
-  backdrop-filter: blur(5px); /* Optional: Apply blur to enhance visibility of form */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire screen */
+  z-index: -1; /* Places the video behind other content */
 }
 
-/* Login form content */
+/* Main container styling with alignment to the right */
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Aligns the content to the right */
+  height: 100vh;
+  overflow: hidden;
+  padding-right: 80px; /* Adds spacing from the right edge */
+}
+
+/* Login Form Section with semi-transparent background */
+.login-section {
+  background: rgba(26, 26, 46, 0.85); /* Dark semi-transparent overlay */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  width: 380px;
+  max-width: 90%;
+  color: #e0e0e0;
+  z-index: 1; /* Ensures the login form is above the video */
+}
+
+/* Styling for the welcome message */
+.login-section h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Subtext under the welcome message */
+.login-section p {
+  font-size: 1rem;
+  color: #b0bec5;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Login form layout */
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.login-form input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* Input container for styling individual input fields */
+.input-container {
+  position: relative;
 }
 
+.input-container input {
+  padding: 12px 15px; /* Adjust padding for better vertical and horizontal space */
+  font-size: 16px;
+  border: 1px solid #4a4a6a;
+  background: rgba(40, 40, 60, 0.85); /* Darker input background */
+  color: #e0e0e0;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%; /* Ensures the input takes the full width of its container */
+  box-sizing: border-box; /* Prevents padding from causing overflow */
+}
+
+/* Focus effect for input fields */
+.input-container input:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 8px rgba(0, 119, 255, 0.4);
+}
+
+/* Styling for the sign-in button */
 .login-form button {
   padding: 12px;
-  background-color: #4CAF50;
+  background: linear-gradient(135deg, #0077ff, #00c6ff); /* Subtle blue gradient */
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 119, 255, 0.3);
 }
 
+/* Hover effect for the sign-in button */
 .login-form button:hover {
-  background-color: #45a049;
+  background: linear-gradient(135deg, #00c6ff, #0077ff);
+  box-shadow: 0 6px 12px rgba(0, 119, 255, 0.5);
 }
 
-p {
+/* Styling for the error message below the login form */
+.login-section p {
+  color:white;
+  font-size: 0.9rem;
   text-align: center;
-  color:black;
+  margin-top: 15px;
 }
-
-
+/* Styling for the error message below the login form */
+.login-section p.error-message {
+  color: red; /* Red color for the error message */
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold; /* Optional: Makes the error message stand out */
+}
 
