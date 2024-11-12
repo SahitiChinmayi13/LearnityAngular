@@ -1,38 +1,47 @@
-<div class="dashboard-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">
-            <img src="/assets/finallogo.png" alt="Logo">
-            <span class="site-name">Learnity</span>
-        </div>
-        <nav>
-            <ul>
-                <li routerLink="/admindashboard/usermanagement" routerLinkActive="active"><i class="fas fa-users"></i> User management</li>
-                <li routerLink="/admindashboard/coursemanagement" routerLinkActive="active"><i class="fas fa-book"></i> Course management</li>
-                <li routerLink="/admindashboard/progressmanagement" routerLinkActive="active"><i class="fas fa-chart-line"></i> Progress tracking</li>
-                <li routerLink="/admindashboard/feedbackmanagement" routerLinkActive="active"><i class="fas fa-comment-alt"></i> Feedback management</li>
-            </ul>
-        </nav>
-        <button class="logout-button" routerLink="/">Logout</button>
-    </aside>
-
-    <!-- Main Content Area -->
-    <div class="main-content">
-        <!-- Top Navigation Bar -->
-        <nav class="top-nav">
-            <div class="user-info">
-                <i class="fas fa-bell"></i>
-                <div class="user-details">
-                    <span>{{ userDetails.fullName }}</span>
-                    <small>{{ userDetails.designation }}</small>
-                    <img src="/assets/avatar.webp" alt="User Avatar" class="avatar">
-                </div>
-            </div>
-        </nav>
-
-        <!-- Router Outlet for Dynamic Content -->
-        <div class="content">
-            <router-outlet></router-outlet>
-        </div>
+<!-- Top Navigation Bar -->
+<nav class="top-nav">
+    <!-- Hamburger Menu and 'MENU' Text -->
+    <div class="hamburger-menu" (click)="toggleSideMenu()">
+      &#9776; <!-- Hamburger Icon -->
+      <span class="menu-text">MENU</span>
     </div>
-</div>
+  
+    <!-- Logo placed between MENU and Search Bar -->
+    <div class="logo">
+      <img src="assets/finallogo.png" alt="Logo" class="logo-img" /> <!-- Replace with your actual logo file -->
+    </div>
+  
+    <!-- Search Bar in the middle -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." />
+    </div>
+  
+    <!-- User Avatar and Username on the right -->
+    <div class="user-details">
+      <img src="assets/avatar.webp" alt="User Avatar" class="avatar" />
+      <span class="user-name">{{ name }}</span>
+      <!-- User Dropdown (appears only on hover) -->
+      <div class="user-dropdown">
+        <ul>
+          <li><a href="#" class="profile-button">My Profile</a></li>
+          <li><a href="#" class="certifications-button">View Certifications</a></li>
+          <!-- Log Out Button with Angular's RouterLink for navigation -->
+          <li><a class="logout-button" routerLink="/login" routerLinkActive="active">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+      <!-- Content area where routed components will appear -->
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="side-menu" [ngClass]="{'active': sideMenuOpen}">
+        <ul>
+            <li><a routerLink="/admindashboard/usermanagement" routerLinkActive="active"> User management</a></li>
+            <li><a routerLink="/admindashboard/coursemanagement" routerLinkActive="active">Course management</a></li>
+            <li><a routerLink="/admindashboard/progressmanagement" routerLinkActive="active">Progress tracking</a></li>
+            <li><a routerLink="/admindashboard/feedbackmanagement" routerLinkActive="active">Feedback management</a></li>
+        </ul>
+      </div>
+  

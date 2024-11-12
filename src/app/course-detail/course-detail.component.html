@@ -1,0 +1,16 @@
+<div class="course-details">
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+  
+    <!-- Video player -->
+    <video id="videoPlayer" controls>
+      <source [src]="course.videoUrl" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  
+    <!-- Button to continue video from where the user left off -->
+    <button (click)="startVideo()">Continue from where you left off</button>
+  
+    <p>Progress: {{ course.progress }}%</p>
+  </div>
+  

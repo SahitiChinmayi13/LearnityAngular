@@ -1,17 +1,62 @@
-<div class="dashboard-intro">
-    <div class="intro-text">
-        <h1>Welcome to the Admin Dashboard</h1>
-        <p>Welcome to your centralized hub for managing and optimizing the educational experience. As an admin, you have access to powerful tools to oversee and enhance the learning environment.</p>
-        <p>Here, you can:</p>
-        <ul>
-            <li><strong>Manage Users:</strong> Add, update, and manage user profiles, including students and instructors. Ensure smooth operation by maintaining accurate and up-to-date user information.</li>
-            <li><strong>Course Management:</strong> Create, edit, and organize courses. Monitor course progress and ensure that all educational materials are up-to-date and relevant.</li>
-            <li><strong>Track Progress:</strong> Keep an eye on student progress with detailed analytics. View completion rates, module progress, and identify areas where additional support may be needed.</li>
-            <li><strong>Review Feedback:</strong> Collect and analyze feedback from users to improve the overall educational experience. Use insights to make data-driven decisions and enhance course offerings.</li>
-        </ul>
-        <p>Use the navigation menu on the left to access each of these features. Explore the tools and settings available to make the most out of your administrative role.</p>
+<div class="admin-overview">
+    <!-- Admin Operations Hub Content -->
+    <div class="overview-content">
+        <h2>Admin Operations Hub</h2>
+        <p>Your command center for enhancing and streamlining the platform’s educational environment. Manage and support with ease and precision.</p>
+        <div class="overview-actions">
+            <!-- Action Item: User Oversight -->
+            <div class="action-item" (click)="navigateTo('admindashboard/usermanagement')">
+                <h3>User Oversight</h3>
+                <p>Maintain updated user data, handle enrollments, and oversee user engagement to ensure a smooth learning experience.</p>
+            </div>
+
+            <!-- Action Item: Courses Setup -->
+            <div class="action-item" (click)="navigateTo('admindashboard/coursemanagement')">
+                <h3>Courses Setup</h3>
+                <p>Build and adjust courses, track content flow, and verify resources for an effective curriculum.</p>
+            </div>
+
+            <!-- Action Item: Progress Insights -->
+            <div class="action-item" (click)="navigateTo('admindashboard/progressmanagement')">
+                <h3>Progress Insights</h3>
+                <p>Analyze student journey data and insights to refine support and track learning achievements.</p>
+            </div>
+
+            <!-- Action Item: Feedback Loops -->
+            <div class="action-item" (click)="navigateTo('admindashboard/feedbackmanagement')">
+                <h3>Feedback Loops</h3>
+                <p>Use feedback tools to gather insights, helping tailor future course updates and engagement strategies.</p>
+            </div>
+        </div>
     </div>
-    <div class="intro-image">
-        <img src="assets/admin_intro.jpg" alt="Dashboard Overview">
+
+    <!-- Admin Image -->
+    <div class="overview-image">
+        <img src="assets/adminintro.png" alt="Admin Operations Overview">
+    </div>
+</div>
+
+<!-- Continue Learning Section -->
+<div class="continue-learning">
+    <h2>Continue Learning</h2>
+    <p>Pick up where you left off and continue your learning journey.</p>
+
+    <div class="courses-list">
+        <div class="course-item" *ngFor="let course of coursesInProgress" (click)="continueCourse(course.id)">
+            <div class="course-details">
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+                <p>Progress: {{ course.progress }}%</p>
+            </div>
+
+            <!-- Video Player for Each Course -->
+            <div class="video-container">
+                <h4>Watch Video</h4>
+                <video width="160" height="120" controls>
+                    <!-- <source [src]="course.videoUrl" type="video/mp4"> -->
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </div>
 </div>

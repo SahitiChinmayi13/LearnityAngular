@@ -1,52 +1,148 @@
-/* Intro section styling */
-.dashboard-intro {
-    background-color: #f0fbff; /* Light background matching the overall theme */
-    padding: 40px;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+/* Admin Overview Styles */
+.admin-overview {
     display: flex;
-    align-items: center;
+    background: #f9fafe;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 20px; /* Space below the intro */
+    margin-bottom: 25px;
+    font-family: Arial, Helvetica, sans-serif; /* Font for Admin Hub */
 }
- 
-/* Text section styling */
-.intro-text {
-    max-width: 60%; /* Limit the text width for better readability */
+
+.overview-content {
+    max-width: 60%;
+    margin-right: 20px;
 }
- 
-.dashboard-intro h1 {
-    color: #057a87;
+
+.admin-overview h2 {
+    font-size: 26px;
+    color: #0a4a6e;
     margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: bold;
 }
- 
-.dashboard-intro p {
-    color: #333;
+
+.admin-overview p {
+    font-size: 16px;
+    color: #3a3a3a;
+    margin-bottom: 15px;
+}
+
+.overview-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.action-item {
+    background: #e9f2f5;
+    padding: 15px;
+    border-radius: 8px;
+    width: calc(50% - 10px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.action-item:hover {
+    background-color: #cce7f5;
+}
+
+.action-item h3 {
     font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px; /* Space between paragraphs */
+    color: #06779f;
+    margin-bottom: 10px;
 }
- 
-.dashboard-intro ul {
-    list-style-type: disc; /* Bulleted list */
-    margin-left: 20px; /* Indentation for the list */
-    margin-bottom: 15px; /* Space below the list */
+
+.action-item p {
+    font-size: 14px;
+    color: #444;
 }
- 
-.dashboard-intro li {
-    font-size: 16px; /* Slightly smaller font for list items */
-    margin-bottom: 10px; /* Space between list items */
+
+.overview-image {
+    max-width: 35%;
 }
- 
-/* Image styling */
-.intro-image {
-    max-width: 35%; /* Make sure the image doesn't overwhelm the text */
+
+.overview-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
- 
-.intro-image img {
-    width: 100%; /* Ensure the image scales properly */
-    border-radius: 10px; /* Match the rounded corners of the section */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
+/* Continue Learning Section Styles */
+.continue-learning {
+    background-color: #f9fafe; /* Same color as Admin Hub */
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif; /* Same font as Admin Hub */
+}
+
+.continue-learning h2 {
+    font-size: 28px;  /* Increased size */
+    color: #0a4a6e;
+    margin-bottom: 15px;
+}
+
+.continue-learning p {
+    font-size: 18px; /* Increased size */
+    color: #3a3a3a;
+    margin-bottom: 25px;
+}
+
+.courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  /* Increased gap for better spacing */
+}
+
+.course-item {
+    background: #ffffff;
+    padding: 20px;  /* Increased padding for larger boxes */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;  /* Adjusted gap between components */
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.course-item:hover {
+    background-color: #cce7f5;
+}
+
+.course-item h3 {
+    font-size: 20px;  /* Increased size */
+    color: #06779f;
+    margin-bottom: 10px;
+}
+
+.course-item p {
+    font-size: 16px;  /* Increased size */
+    color: #444;
+}
+
+/* Video Container for Each Course */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+}
+
+.video-container h4 {
+    font-size: 18px;  /* Increased size */
+    color: #06779f;
+    margin-bottom: 10px;
+}
+
+video {
+    max-width: 100%;
+    border-radius: 8px;
 }

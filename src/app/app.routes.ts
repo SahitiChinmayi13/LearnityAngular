@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-// import { UserIntroComponent } from './user-intro/user-intro.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserCourseComponent } from './user-course/user-course.component';
 import { UserProgressComponent } from './user-progress/user-progress.component';
@@ -39,7 +39,8 @@ export const routes: Routes = [
             {path:"addcourse",component:AdminAddcourseComponent},
             {path:"finduser",component:AdminSearchuserComponent}
         ]
-    }
+    },
+    { path: 'course/:id', component: CourseDetailComponent }
     
     
 ];

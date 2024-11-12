@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CourseService {
-  private url ="http://localhost:9999/courses";
+  private url ="http://localhost:8082/courses";
   constructor(private http:HttpClient,private authService: AuthService) { }
   selectedCourse: Course = {course_id:0,title:"", description:"", duration:"", module:0}
   createCourse(course:any):Observable<any>{

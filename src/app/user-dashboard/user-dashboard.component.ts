@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener,OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Import CommonModule
@@ -57,5 +57,14 @@ export class UserDashboardComponent implements OnInit {
 
   logout() {
     // Add logic for logout if needed
+  }
+
+  // Detect clicks outside the side menu to close it
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.side-menu') && !target.closest('.hamburger-menu')) {
+      this.sideMenuOpen = false;
+    }
   }
 }
