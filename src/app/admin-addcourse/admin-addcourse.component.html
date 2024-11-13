@@ -1,33 +1,31 @@
 <div class="form-container">
-    <button [routerLink]="['/admindashboard/coursemanagement']" class="back-button">Go Back</button>
-    <h2>Add Course</h2>
-    <form (ngSubmit)="onSubmit()" #courseForm="ngForm">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" [(ngModel)]="course.title" required>
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" [(ngModel)]="course.description" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="duration">Duration (hours)</label>
-        <input type="number" id="duration" name="duration" [(ngModel)]="course.duration" required>
-      </div>
-      <div class="form-group">
-        <label for="modules">Number of Modules</label>
-        <input type="number" id="modules" name="modules" [(ngModel)]="course.module" required>
-      </div>
-      <!-- <div class="form-group">
-        <label for="role">Role</label>
-        <select id="role" name="role" ngModel required>
-          <option value="Admin">Admin</option>
-          <option value="Java Developer">Java Developer</option>
-          <option value="Designer">Designer</option>
-          
-        </select>
-      </div> -->
-      <button type="submit">Add Course</button>
-    </form>
-  </div>
+  <button [routerLink]="['/admindashboard/coursemanagement']" class="back-button">
+    <i class="fa fa-arrow-left"></i> Go Back
+  </button>
   
+  <h2>Add Course</h2>
+  
+  <form (ngSubmit)="onSubmit()" #courseForm="ngForm">
+    <div class="form-group">
+      <label for="title">Course Title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="course.title" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="description">Course Description</label>
+      <textarea id="description" name="description" [(ngModel)]="course.description" required></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="duration">Duration (hours)</label>
+      <input type="number" id="duration" name="duration" [(ngModel)]="course.duration" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="modules">Number of Modules</label>
+      <input type="number" id="modules" name="modules" [(ngModel)]="course.module" required>
+    </div>
+
+    <button type="submit" [disabled]="!courseForm.form.valid">Add Course</button>
+  </form>
+</div>
