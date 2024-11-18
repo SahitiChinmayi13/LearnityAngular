@@ -1,46 +1,47 @@
 <!-- Top Navigation Bar -->
 <nav class="top-nav">
-    <!-- Hamburger Menu and 'MENU' Text -->
-    <div class="hamburger-menu" (click)="toggleSideMenu()">
-      &#9776; <!-- Hamburger Icon -->
-      <span class="menu-text">MENU</span>
+  <div class="hamburger-menu" (click)="toggleSideMenu()">
+    &#9776; <!-- Hamburger Icon -->
+    <span class="menu-text">MENU</span>
+  </div>
+
+  <!-- Logo placed between MENU and Search Bar -->
+  <div class="logo">
+    <img src="assets/finallogo.png" alt="Logo" class="logo-img" />
+  </div>
+
+  <!-- Search Bar in the middle -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." />
+  </div>
+
+  <!-- User Avatar and Username on the right -->
+  <div class="user-details">
+    <img src="assets/avatar.webp" alt="User Avatar" class="avatar" />
+    <span class="user-name">{{ name }}</span>
+    <!-- User Dropdown -->
+    <div class="user-dropdown">
+      <ul>
+        <li><a href="#" class="profile-button">My Profile</a></li>
+        <li><a href="#" class="certifications-button">View Certifications</a></li>
+        <li><a class="logout-button" routerLink="/login" routerLinkActive="active">Logout</a></li>
+      </ul>
     </div>
-  
-    <!-- Logo placed between MENU and Search Bar -->
-    <div class="logo">
-      <img src="assets/finallogo.png" alt="Logo" class="logo-img" /> <!-- Replace with your actual logo file -->
-    </div>
-  
-    <!-- Search Bar in the middle -->
-    <div class="search-bar">
-      <input type="text" placeholder="Search..." />
-    </div>
-  
-    <!-- User Avatar and Username on the right -->
-    <div class="user-details">
-      <img src="assets/avatar.webp" alt="User Avatar" class="avatar" />
-      <span class="user-name">{{ name }}</span>
-      <!-- User Dropdown (appears only on hover) -->
-      <div class="user-dropdown">
-        <ul>
-          <li><a href="#" class="profile-button">My Profile</a></li>
-          <li><a href="#" class="certifications-button">View Certifications</a></li>
-          <!-- Log Out Button with Angular's RouterLink for navigation -->
-          <li><a class="logout-button" routerLink="/login" routerLinkActive="active">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-      <!-- Content area where routed components will appear -->
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-      <div class="side-menu" [ngClass]="{'active': sideMenuOpen}">
-        <ul>
-            <li><a routerLink="/admindashboard/usermanagement" routerLinkActive="active"> User management</a></li>
-            <li><a routerLink="/admindashboard/coursemanagement" routerLinkActive="active">Course management</a></li>
-            <li><a routerLink="/admindashboard/progressmanagement" routerLinkActive="active">Progress tracking</a></li>
-            <li><a routerLink="/admindashboard/feedbackmanagement" routerLinkActive="active">Feedback management</a></li>
-        </ul>
-      </div>
+  </div>
+</nav>
+
+<!-- Content area where routed components will appear -->
+<div class="dashboard-container">
+  <div class="side-menu" [ngClass]="{'active': sideMenuOpen}">
+    <ul>
+      <li><a routerLink="/admindashboard/usermanagement" routerLinkActive="active">User management</a></li>
+      <li><a routerLink="/admindashboard/coursemanagement" routerLinkActive="active">Course management</a></li>
+      <li><a routerLink="/admindashboard/progressmanagement" routerLinkActive="active">Progress tracking</a></li>
+      <li><a routerLink="/admindashboard/feedbackmanagement" routerLinkActive="active">Feedback management</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

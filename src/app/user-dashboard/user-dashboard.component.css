@@ -1,8 +1,11 @@
-/* Your existing styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Container */
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  position: relative;
 }
 
 /* Top Navigation Bar */
@@ -13,7 +16,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 /* Hamburger Menu */
@@ -36,12 +43,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 50px; /* Moved logo further to the right */
-  margin-right: 10px; /* Add space between the logo and search bar */
+  margin-left: 50px;
+  margin-right: 10px;
 }
 
 .logo-img {
-  width: 120px; /* Increased size of logo */
+  width: 120px;
   height: 40px;
 }
 
@@ -50,11 +57,11 @@
   display: flex;
   justify-content: center;
   flex: 2;
-  margin-left: -110px;
+  margin-left: -450px;
 }
 
 .search-bar input {
-  width: 50%; /* Search bar width */
+  width: 300%;
   padding: 6px;
   font-size: 14px;
   border: none;
@@ -71,86 +78,81 @@
 .user-details {
   display: flex;
   align-items: center;
+  gap: 12px;
+  padding: 0 20px;
   position: relative;
 }
 
-.avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 15px;
+.user-info {
+  display: flex;
+  align-items: center; /* Changed from flex-direction: column */
 }
 
 .user-name {
-  font-size: 20px;
-  margin-right: 20px;
-  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* Dropdown */
 .user-dropdown {
   position: absolute;
   right: 0;
-  top: 55px; /* Adjusted for better visibility */
+  top: 55px;
   background-color: white;
   border-radius: 5px;
-  display: none; /* Initially hidden */
+  display: none;
   width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
 .user-details:hover .user-dropdown {
-  display: block; /* Show dropdown when hovering over the user details */
-}
-
-/* Styling for dropdown buttons */
-.user-dropdown ul li a {
   display: block;
-  padding: 10px 15px;
-  margin: 5px;
-  border-radius: 8px;
-  font-size: 16px;
-  text-align: center;
-  transition: background-color 0.3s ease;
+}
+
+.user-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-dropdown ul li {
+  padding: 10px;
+}
+
+.user-dropdown ul li a {
+  color: #333;
   text-decoration: none;
-  color: #333; /* Default color */
+  display: block;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
 }
 
-/* Button styles for My Profile and View Certifications */
-.profile-button, .certifications-button {
-  background-color: #f0f0f0; /* Light grey */
+.user-dropdown ul li a:hover {
+  background-color: #f5f5f5;
+  color: #007bff;
 }
 
-.profile-button:hover, .certifications-button:hover {
-  background-color: #e0e0e0; /* Slightly darker grey on hover */
-}
-
-/* Red Logout button */
-.logout-button {
-  background-color: #ff4d4d; /* Red color */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.logout-button:hover {
-  background-color: #ff6666; /* Lighter red on hover */
-}
-
+/* Side Menu */
 .side-menu {
-  position: absolute;
-  top: 50px; /* Ensure the side menu opens below the hamburger */
+  position: fixed;
+  top: 60px;
   left: -250px;
   background-color: #333;
   width: 250px;
-  height: 100%;
-  transition: left 0.3s ease;
+  height: calc(100vh - 60px);
+  transition: all 0.3s ease;
   z-index: 10;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .side-menu.active {
@@ -159,7 +161,11 @@
 
 .side-menu ul {
   list-style: none;
-  padding: 0;
+  padding: 20px 0;
+}
+
+.side-menu ul li {
+  margin: 8px 0;
 }
 
 .side-menu ul li a {
@@ -173,25 +179,163 @@
   background-color: #444;
 }
 
-.content {
-  margin-top: 60px;
-  padding: 20px;
-}
-
-/* Center the Welcome message in the page and move it up */
+/* Introduction Section - Updated */
 .introduction {
   display: flex;
-  justify-content: center; /* Horizontally center the content */
-  align-items: center;     /* Vertically center the content */
-  height: 70vh;            /* Reduce the height to move it up */
-  text-align: center;      /* Center the text */
-  margin-top: -200px;       /* Move the Welcome message up */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 180px);
+  padding: 40px 20px;
+  margin-top: 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
-h1 {
-  font-size: 32px;
+.introduction h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  animation: fadeInUp 0.8s ease;
 }
 
-p {
-  font-size: 18px;
+.introduction .tagline {
+  font-size: 1.5rem;
+  color: #00c6ff;
+  margin-bottom: 40px;
+  font-weight: 500;
+  animation: fadeInUp 1s ease;
+}
+
+/* Dashboard Stats - New */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  animation: fadeInUp 1.2s ease;
+}
+
+.stat-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card i {
+  font-size: 2.5rem;
+  color: #00c6ff;
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Active route styling */
+.side-menu ul li a.active {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #00c6ff;
+  padding-left: 30px;
+}
+
+/* Content area */
+.content {
+  margin-top: 80px;
+  padding: 20px;
+  flex: 1;
+  position: relative;
+  min-height: calc(100vh - 80px);
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .introduction h1 {
+    font-size: 2.5rem;
+  }
+
+  .introduction .tagline {
+    font-size: 1.2rem;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .logo {
+    margin-left: 20px;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .user-details {
+    padding: 0 10px;
+  }
+}
+
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #ff6666;
+}
+
+/* Search bar focus effect */
+.search-bar input:focus {
+  background-color: #555;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover effects */
+.search-bar input:hover {
+  background-color: #494949;
 }

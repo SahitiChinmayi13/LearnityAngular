@@ -1,7 +1,7 @@
-export class Feedback{
-    feedbackId!:Number;
-    userId!:Number;
-    courseId!:Number;
-    description!:String;
-    rating!:number;
+export class Feedback {
+    feedbackId!: number;  
+    userId!: number;      
+    courseId!: number;    
+    description!: string; 
+    rating!: number;
 }

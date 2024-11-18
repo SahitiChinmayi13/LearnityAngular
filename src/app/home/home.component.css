@@ -1,3 +1,6 @@
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* Reset the default margin and padding */
 body, html {
     margin: 0;
@@ -5,7 +8,7 @@ body, html {
     height: 100%;
     width: 100%;
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Header styling (Nav Bar) */
@@ -39,11 +42,11 @@ header {
     margin-right: 15px;
 }
 
-
 .site-name {
     font-size: 28px; /* Slightly larger font size for the site name */
     color: #0b6eb1; /* Change logo text color to a blue shade */
-    font-weight: bold;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Navigation styling */
@@ -68,7 +71,7 @@ header {
     text-decoration: none;
     position: relative;
     font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif; /* Set your desired font */
+    font-family: 'Inter', sans-serif;
     margin-left: -10px;
     padding: 10px 20px; /* Add padding to create space inside the box */
     background-color: #000; /* Set background color to black */
@@ -96,6 +99,7 @@ header {
     border-radius: 8px;
     width: 300px;
     max-height: 400px;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -172,10 +176,20 @@ header {
     font-size: 28px;
     font-weight: bold;
     padding-left: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Shift content slightly to the right */
+    font-family: 'Inter', sans-serif;
     opacity: 0; /* Initially hide the content */
     transform: translateY(20px); /* Start position below */
     animation: slideUp 1s ease-out forwards 0.5s; /* Animate the content */
+}
+
+.content-section h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.content-section p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }
 
 /* Styling for the login section */
@@ -202,6 +216,7 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     outline: none;
     font-weight: 600;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Hover effect for the login button */

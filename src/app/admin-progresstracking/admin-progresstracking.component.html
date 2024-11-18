@@ -1,42 +1,56 @@
 <div class="progress-tracking-container">
-    <div class="header">
-      <h2>Progress tracking</h2>
-    </div>
-    
-    <div class="stats-cards">
-      <div class="stats-card">
-        <h3>Total no. of students</h3>
-        <p>{{totalUsers}}</p>
-      </div>
-      <div class="stats-card">
-        <h3>Total no. of courses</h3>
-        <p>{{totalCourses}}</p>
-      </div>
-      <div class="stats-card">
-        <h3>Total no. of feedback</h3>
-        <p>{{feedbacklength}}</p>
-      </div>
-    </div>
-  
-    <div class="individual-tracking">
-      <h3>Individual tracking</h3>
-      <div class="search-container">
-        <input type="number" placeholder="Search student by ID" class="search-input" [(ngModel)]="id">
-        <button class="search-button" (click)="search(id)">
-            <i class="fas fa-search"></i> Search
-          </button>
-              </div>
-    <div *ngIf=(boo)>
-      <div class="student-card">
-        <img src="assets/student-avatar.png" alt="Student Avatar" class="student-avatar">
-        <div class="student-info">
-          <h4>{{user.fullName}}</h4>
-          <p>{{user.role}}</p>
-            <h3>{{course.title}} : {{course.description}}</h3>
-          <p>Status : {{progress.status}}</p>
-        </div>
-      </div>
-    </div>
-    </div>
+  <div class="header">
+      <h2>Progress Tracking</h2>
   </div>
   
+  <div class="stats-cards">
+      <div class="stats-card">
+          <h3>Total Students</h3>
+          <p>{{totalUsers}}</p>
+      </div>
+      <div class="stats-card">
+          <h3>Total Courses</h3>
+          <p>{{totalCourses}}</p>
+      </div>
+      <div class="stats-card">
+          <h3>Total Feedback</h3>
+          <p>{{feedbacklength}}</p>
+      </div>
+  </div>
+
+  <div class="individual-tracking">
+      <h3>Individual Student Tracking</h3>
+      <div class="search-container">
+          <input 
+              type="number" 
+              placeholder="Enter student ID to track progress" 
+              class="search-input" 
+              [(ngModel)]="id"
+          >
+          <button class="search-button" (click)="search(id)">
+              <i class="fas fa-search"></i>
+              Track Progress
+          </button>
+      </div>
+
+      <div *ngIf="boo" class="student-card">
+          <div class="user-identifier">
+              <div class="id-badge">#{{user.id}}</div>
+              <div class="username">{{user.username}}</div>
+          </div>
+          <div class="student-info">
+              <h4>{{user.fullName}}</h4>
+              <p><i class="fas fa-user-tag"></i> {{user.role}}</p>
+              <h3>
+                  <i class="fas fa-book"></i> 
+                  {{course.title}}
+              </h3>
+              <p class="course-desc">{{course.description}}</p>
+              <div class="status-badge" [ngClass]="{'completed': progress.status === 'Completed'}">
+                  <i class="fas fa-chart-line"></i> 
+                  {{progress.status}}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

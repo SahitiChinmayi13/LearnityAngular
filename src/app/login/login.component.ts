@@ -31,7 +31,7 @@ export class LoginComponent {
           }
         else{
           console.log(this.authService.getRole())
-            this.router.navigate(['/userdashboard'])
+            this.router.navigate(['/user-dashboard'])
         }
         
       } else {

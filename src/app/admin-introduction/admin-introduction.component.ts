@@ -1,32 +1,64 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';  // Import Router for navigation
-import { CommonModule } from '@angular/common';  // Import CommonModule for *ngFor
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+interface Course {
+  id: string;
+  title: string;
+  description: string;
+  progress: number;
+}
 
 @Component({
   selector: 'app-admin-introduction',
-  standalone: true,
-  imports: [CommonModule],  // Include CommonModule to use *ngFor
   templateUrl: './admin-introduction.component.html',
-  styleUrls: ['./admin-introduction.component.css']
+  styleUrls: ['./admin-introduction.component.css'],
+  standalone: true,
+  imports: [CommonModule]
 })
-export class AdminIntroductionComponent {
+export class AdminIntroductionComponent implements OnInit {
+  coursesInProgress: Course[] = [];
 
-  // Hardcoded list of courses the user has started
-  coursesInProgress = [
-    { id: 1, title: 'Angular Fundamentals', description: 'Learn the basics of Angular framework.', progress: 50 },
-    { id: 2, title: 'Advanced TypeScript', description: 'Deep dive into TypeScript and its advanced features.', progress: 30 },
-    { id: 3, title: 'Web Development with Node.js', description: 'Build scalable applications with Node.js.', progress: 75 }
-  ];
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }  // Inject Router
-
-  // Method to navigate to different pages
-  navigateTo(page: string): void {
-    this.router.navigate([page]);  // Navigate based on the page parameter
+  ngOnInit() {
+    this.initializeCourses();
   }
 
-  continueCourse(courseId: number): void {
-    // console.log('Navigating to course with ID:', courseId);
-    this.router.navigate([`/course/${courseId}`]);  // Navigate to course detail page, passing the course ID
+  initializeCourses() {
+    this.coursesInProgress = [
+      {
+        id: 'SLM001',
+        title: 'Strategic Leadership & Management',
+        description: 'Advanced leadership strategies and organizational management techniques',
+        progress: 75
+      },
+      {
+        id: 'BAE002',
+        title: 'Business Analytics for Executives',
+        description: 'Data-driven decision making and business intelligence for leadership',
+        progress: 60
+      },
+      {
+        id: 'CFM003',
+        title: 'Corporate Finance Management',
+        description: 'Financial strategy, risk management, and investment decision making',
+        progress: 45
+      }
+    ];
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+  }
+
+  // Update this method to use the correct nested route
+  navigateToCourse(courseId: string) {
+    this.router.navigate(['/admindashboard/course', courseId]);  // Changed this line
+  }
+
+  checkCourses() {
+    alert('Number of courses: ' + this.coursesInProgress.length + 
+          '\nFirst course: ' + (this.coursesInProgress[0]?.title || 'No courses'));
   }
 }

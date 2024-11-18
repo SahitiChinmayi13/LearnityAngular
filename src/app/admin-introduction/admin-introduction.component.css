@@ -1,148 +1,151 @@
-/* Admin Overview Styles */
-.admin-overview {
-    display: flex;
-    background: #f9fafe;
+/* Import Inter font to match theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.admin-container {
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+    background: #f8f9fa;
+    min-height: calc(100vh - 60px);
+}
+
+/* Admin Hub Section */
+.admin-hub {
+    background: linear-gradient(135deg, #0077ff, #00c6ff);
+    border-radius: 15px;
+    padding: 2rem;
+    color: white;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 119, 255, 0.2);
+}
+
+.hub-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hub-content > p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.hub-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Action Cards */
+.action-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 25px;
-    font-family: Arial, Helvetica, sans-serif; /* Font for Admin Hub */
-}
-
-.overview-content {
-    max-width: 60%;
-    margin-right: 20px;
-}
-
-.admin-overview h2 {
-    font-size: 26px;
-    color: #0a4a6e;
-    margin-bottom: 20px;
-}
-
-.admin-overview p {
-    font-size: 16px;
-    color: #3a3a3a;
-    margin-bottom: 15px;
-}
-
-.overview-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.action-item {
-    background: #e9f2f5;
-    padding: 15px;
-    border-radius: 8px;
-    width: calc(50% - 10px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, background 0.3s ease;
     cursor: pointer;
 }
 
-.action-item:hover {
-    background-color: #cce7f5;
+.action-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.action-item h3 {
-    font-size: 18px;
-    color: #06779f;
-    margin-bottom: 10px;
+.action-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-.action-item p {
-    font-size: 14px;
-    color: #444;
+.action-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
-.overview-image {
-    max-width: 35%;
+.action-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
-.overview-image img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+/* Recent Activity Section */
+.recent-activity {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Continue Learning Section Styles */
-.continue-learning {
-    background-color: #f9fafe; /* Same color as Admin Hub */
-    margin-top: 30px;
-    padding: 30px;
+.recent-activity h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.activity-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.activity-card {
+    background: #f8f9fa;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif; /* Same font as Admin Hub */
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;  /* Add this line */
 }
 
-.continue-learning h2 {
-    font-size: 28px;  /* Increased size */
-    color: #0a4a6e;
-    margin-bottom: 15px;
+.activity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);  /* Add this line */
 }
 
-.continue-learning p {
-    font-size: 18px; /* Increased size */
-    color: #3a3a3a;
-    margin-bottom: 25px;
+.activity-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
-.courses-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;  /* Increased gap for better spacing */
+.activity-content p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
 }
 
-.course-item {
-    background: #ffffff;
-    padding: 20px;  /* Increased padding for larger boxes */
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;  /* Adjusted gap between components */
-    width: 100%;
-    transition: background-color 0.3s;
+/* Progress Bar */
+.progress-bar {
+    background: #e9ecef;
+    border-radius: 50px;
+    height: 8px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
 }
 
-.course-item:hover {
-    background-color: #cce7f5;
+.progress {
+    background: linear-gradient(90deg, #0077ff, #00c6ff);
+    height: 100%;
+    border-radius: 50px;
+    transition: width 0.3s ease;
 }
 
-.course-item h3 {
-    font-size: 20px;  /* Increased size */
-    color: #06779f;
-    margin-bottom: 10px;
+.progress-text {
+    font-size: 0.9rem;
+    color: #666;
 }
 
-.course-item p {
-    font-size: 16px;  /* Increased size */
-    color: #444;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 1rem;
+    }
 
-/* Video Container for Each Course */
-.video-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 170px;
-}
+    .hub-actions {
+        grid-template-columns: 1fr;
+    }
 
-.video-container h4 {
-    font-size: 18px;  /* Increased size */
-    color: #06779f;
-    margin-bottom: 10px;
-}
-
-video {
-    max-width: 100%;
-    border-radius: 8px;
+    .activity-list {
+        grid-template-columns: 1fr;
+    }
 }

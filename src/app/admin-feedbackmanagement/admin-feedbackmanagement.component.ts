@@ -4,7 +4,7 @@ import { FeedbackService } from '../feedback.service';
 import { Feedback } from '../Feedback';
 import { UserService } from '../user.service';
 import { User } from '../User';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-feedbackmanagement',
@@ -14,35 +14,66 @@ import { User } from '../User';
   styleUrls: ['./admin-feedbackmanagement.component.css']
 })
 export class AdminFeedbackmanagementComponent {
-  feedbacks: Feedback[] = []
-  users:User[]=[]
-  totalUsers=0
-  totalFeedbacks=0
-  feedBacksPending=this.totalUsers-this.totalFeedbacks
-  constructor(private feedbackService:FeedbackService,private userService:UserService){
+  feedbacks: Feedback[] = [];
+  users: User[] = [];
+  totalUsers = 0;
+  totalFeedbacks = 0;
+  currentPage: number = 0;
+  pageSize: number = 6;
+
+  constructor(
+    private feedbackService: FeedbackService,
+    private userService: UserService,
+    private router: Router
+  ) {
     this.getAllFeedbacks();
     this.fetchUsers();
   }
-  fetchUsers(){
-    this.userService.getUsers().subscribe((data:User[])=>{
-      console.log(data);
-      this.users=data;
-      this.totalUsers=this.users.length;
-      this.feedBacksPending=this.totalUsers-this.totalFeedbacks
 
-    })
+  // Add these new methods
+  navigateToAddFeedback() {
+    this.router.navigate(['/admindashboard/addfeedback']);
   }
 
-  getAllFeedbacks(){
-    this.feedbackService.getAllFeedback().subscribe((data)=>{
-      this.feedbacks=data;
-      console.log(data)
-      this.totalFeedbacks=this.feedbacks.length;
-      this.feedbackService.setFeedbackLenght(this.totalFeedbacks)
-    })
+
+  fetchUsers() {
+    this.userService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
+      this.totalUsers = this.users.length;
+    });
   }
-  currentPage: number = 0;
-  pageSize: number = 6;
+
+  getAllFeedbacks() {
+    this.feedbackService.getAllFeedback().subscribe((data) => {
+      this.feedbacks = data;
+      this.totalFeedbacks = this.feedbacks.length;
+    });
+  }
+
+  editFeedback(feedback: Feedback) {
+    this.router.navigate(['/admindashboard/edit-feedback', feedback.feedbackId]);
+  }
+
+  addFeedbackForUser(user: User) {
+    // Navigate to add feedback page with user ID
+    this.router.navigate(['/admindashboard/addfeedback'], {
+      queryParams: { userId: user.id }
+    });
+  }
+
+  deleteFeedback(feedbackId: number) {
+    if (confirm('Are you sure you want to delete this feedback?')) {
+      this.feedbackService.deleteFeedback(feedbackId).subscribe({
+        next: () => {
+          // Refresh the feedback list after deletion
+          this.getAllFeedbacks();
+        },
+        error: (error) => {
+          console.error('Error deleting feedback:', error);
+        }
+      });
+    }
+  }
 
   get paginatedFeedbacks(): Feedback[] {
     const start = this.currentPage * this.pageSize;

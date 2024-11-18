@@ -1,41 +1,56 @@
+<div class="feedback-container">
+  <div class="feedback-header">
+    <h2>Course Feedback</h2>
+    <p>Help us improve by sharing your experience</p>
+  </div>
 
-    <!-- Course Name and Description -->
-    <div class="course-info">
-        <h1>{{ course.title }}</h1>
-        <p>{{ course.description }}</p>
-      </div>
-    
-      <!-- Submit Feedback Header -->
-      <div class="feedback-header">
-        <h2>Submit Feedback</h2>
-      </div>
-    
-      <!-- Rating Section -->
-      <div class="rating-section">
-        <div class="stars">
-          <span class="star" (click)="setRating(1)" [class.filled]="rating >= 1">☆</span>
-          <span class="star" (click)="setRating(2)" [class.filled]="rating >= 2">☆</span>
-          <span class="star" (click)="setRating(3)" [class.filled]="rating >= 3">☆</span>
-          <span class="star" (click)="setRating(4)" [class.filled]="rating >= 4">☆</span>
-          <span class="star" (click)="setRating(5)" [class.filled]="rating >= 5">☆</span>
-        </div>
-        <p class="rating-text">Rating: {{ feedback.rating }}</p>
-      </div>
-    
-      <!-- Brief Review -->
-      <div class="review-section">
-        <textarea placeholder="Write a brief review..." [(ngModel)]="feedback.description" rows="4" class="form-control"></textarea>
-      </div>
-    
-      <!-- Feedback Input Fields -->
-      <div class="input-section">
-        <input type="text" placeholder="Your Name" class="form-control">
-        <input type="email" placeholder="Your Email"  class="form-control">
-      </div>
-    
-      <!-- Submit Button -->
-      <div class="submit-button">
-        <button (click)="submitFeedback(feedback)">Submit Feedback</button>
-      </div>
-  
-    
+  <!-- Course Selection -->
+  <div class="course-selection">
+    <label>Select Course</label>
+    <select [(ngModel)]="selectedCourseId" (change)="onCourseSelect()" class="form-control">
+      <option value="">Choose a course</option>
+      <option *ngFor="let course of enrolledCourses" [value]="course.course_id">
+        {{ course.title }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Course Info (shows after selection) -->
+  <div class="course-info" *ngIf="course.title">
+    <h3>{{ course.title }}</h3>
+    <p>{{ course.description }}</p>
+  </div>
+
+  <!-- Rating Section -->
+  <div class="rating-section">
+    <label>Your Rating</label>
+    <div class="stars">
+      <span class="star" *ngFor="let star of [1,2,3,4,5]" 
+            (click)="setRating(star)" 
+            [class.filled]="rating >= star">★</span>
+    </div>
+    <p class="rating-text">{{ rating }} out of 5</p>
+  </div>
+
+  <!-- Feedback Text -->
+  <div class="feedback-text">
+    <label>Your Feedback</label>
+    <textarea 
+      [(ngModel)]="feedback.description" 
+      placeholder="Share your learning experience with this course..."
+      rows="4" 
+      class="form-control">
+    </textarea>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="button-group">
+    <button class="cancel-btn" (click)="goBack()">Cancel</button>
+    <button 
+      class="submit-btn" 
+      [disabled]="!isValidFeedback()"
+      (click)="submitFeedback(feedback)">
+      Submit Feedback
+    </button>
+  </div>
+</div>

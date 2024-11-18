@@ -1,5 +1,5 @@
 export class User{
-    id!:Number;
+    id!:number;
     fullName!:String;
     username!:String;
     password!:String;

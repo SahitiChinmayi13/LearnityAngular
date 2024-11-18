@@ -1,62 +1,58 @@
-<div class="admin-overview">
-    <!-- Admin Operations Hub Content -->
-    <div class="overview-content">
-        <h2>Admin Operations Hub</h2>
-        <p>Your command center for enhancing and streamlining the platform’s educational environment. Manage and support with ease and precision.</p>
-        <div class="overview-actions">
-            <!-- Action Item: User Oversight -->
-            <div class="action-item" (click)="navigateTo('admindashboard/usermanagement')">
-                <h3>User Oversight</h3>
-                <p>Maintain updated user data, handle enrollments, and oversee user engagement to ensure a smooth learning experience.</p>
-            </div>
+<div class="admin-container">
+    <!-- Keep your existing Admin Operations Hub exactly as it was -->
+    <div class="admin-hub">
+        <div class="hub-content">
+            <h2>Admin Operations Hub</h2>
+            <p>Your command center for managing the learning platform</p>
+            
+            <div class="hub-actions">
+                <!-- User Management -->
+                <div class="action-card" (click)="navigateTo('admindashboard/usermanagement')">
+                    <div class="action-icon">👥</div>
+                    <h3>User Management</h3>
+                    <p>Manage users and their access</p>
+                </div>
 
-            <!-- Action Item: Courses Setup -->
-            <div class="action-item" (click)="navigateTo('admindashboard/coursemanagement')">
-                <h3>Courses Setup</h3>
-                <p>Build and adjust courses, track content flow, and verify resources for an effective curriculum.</p>
-            </div>
+                <!-- Course Management -->
+                <div class="action-card" (click)="navigateTo('admindashboard/coursemanagement')">
+                    <div class="action-icon">📚</div>
+                    <h3>Course Management</h3>
+                    <p>Create and manage courses</p>
+                </div>
 
-            <!-- Action Item: Progress Insights -->
-            <div class="action-item" (click)="navigateTo('admindashboard/progressmanagement')">
-                <h3>Progress Insights</h3>
-                <p>Analyze student journey data and insights to refine support and track learning achievements.</p>
-            </div>
+                <!-- Progress Tracking -->
+                <div class="action-card" (click)="navigateTo('admindashboard/progressmanagement')">
+                    <div class="action-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor learning progress</p>
+                </div>
 
-            <!-- Action Item: Feedback Loops -->
-            <div class="action-item" (click)="navigateTo('admindashboard/feedbackmanagement')">
-                <h3>Feedback Loops</h3>
-                <p>Use feedback tools to gather insights, helping tailor future course updates and engagement strategies.</p>
+                <!-- Feedback Management -->
+                <div class="action-card" (click)="navigateTo('admindashboard/feedbackmanagement')">
+                    <div class="action-icon">💭</div>
+                    <h3>Feedback Management</h3>
+                    <p>Review and manage feedback</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Admin Image -->
-    <div class="overview-image">
-        <img src="assets/adminintro.png" alt="Admin Operations Overview">
-    </div>
-</div>
-
-<!-- Continue Learning Section -->
-<div class="continue-learning">
-    <h2>Continue Learning</h2>
-    <p>Pick up where you left off and continue your learning journey.</p>
-
-    <div class="courses-list">
-        <div class="course-item" *ngFor="let course of coursesInProgress" (click)="continueCourse(course.id)">
-            <div class="course-details">
-                <h3>{{ course.title }}</h3>
-                <p>{{ course.description }}</p>
-                <p>Progress: {{ course.progress }}%</p>
-            </div>
-
-            <!-- Video Player for Each Course -->
-            <div class="video-container">
-                <h4>Watch Video</h4>
-                <video width="160" height="120" controls>
-                    <!-- <source [src]="course.videoUrl" type="video/mp4"> -->
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+    <!-- Recent Activity Section -->
+    <div class="recent-activity">
+        <h2>Recent Activity</h2>
+        <div class="activity-list">
+            <ng-container *ngFor="let course of coursesInProgress">
+                <div class="activity-card" (click)="navigateToCourse(course.id)">
+                    <div class="activity-content">
+                        <h3>{{ course.title }}</h3>
+                        <p>{{ course.description }}</p>
+                        <div class="progress-bar">
+                            <div class="progress" [style.width]="course.progress + '%'"></div>
+                        </div>
+                        <span class="progress-text">{{ course.progress }}% Complete</span>
+                    </div>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>

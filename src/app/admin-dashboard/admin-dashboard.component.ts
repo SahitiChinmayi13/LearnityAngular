@@ -1,7 +1,7 @@
-import { Component, HostListener,OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { UserService } from '../user.service';
 import { User } from '../User';
@@ -11,41 +11,32 @@ import { User } from '../User';
   standalone: true,
   imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']  // Make sure it's styleUrls (plural)
+  styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  userDetails: any = null;
-  error: string | null = null;
-  sideMenuOpen: boolean = false;  // Declare a variable to control side menu visibility
   username: string = '';
+  name: String = '';
   user: User = new User();
-  name: String = ''; // Name of the user
+  sideMenuOpen: boolean = false;
+  showWelcomeMessage: boolean = true;
 
-  constructor(private userService: UserService,
-    private adminService: AdminService
-  ) { 
-
+  constructor(
+    private userService: UserService,
+    private adminService: AdminService,
+    private router: Router
+  ) {
+    this.username = this.userService.getUsername();
+    this.findUser(this.username);
   }
 
   ngOnInit(): void {
-    this.loadUserDetails(this.userService.getUsername());
-  }
-
-  loadUserDetails(userId: string): void {
-    this.userService.getUserDetails(userId).subscribe(
-      data => {
-        this.userDetails = data;
-      },
-      error => {
-        this.error = 'Failed to load user details';
-        console.error('Error:', error);
+    // Subscribe to router events and check the current URL
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Show welcome message only on the main dashboard
+        this.showWelcomeMessage = event.urlAfterRedirects === '/admindashboard';
       }
-    );
-  }
-
-  // Method to toggle the side menu visibility
-  toggleSideMenu(): void {
-    this.sideMenuOpen = !this.sideMenuOpen;
+    });
   }
 
   findUser(username: string) {
@@ -57,8 +48,8 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  logout(): void {
-    // Implement logout logic here if needed
+  toggleSideMenu(): void {
+    this.sideMenuOpen = !this.sideMenuOpen;
   }
 
   // Detect clicks outside the side menu to close it

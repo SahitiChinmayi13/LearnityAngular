@@ -33,11 +33,11 @@ export class UserDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Subscribe to router events and check the current URL
+    // Show welcome message only on the main dashboard path
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Show the welcome message only on the dashboard
-        this.showWelcomeMessage = event.urlAfterRedirects === '/user-dashboard';
+        this.showWelcomeMessage = event.urlAfterRedirects === '/user-dashboard' || 
+                                 event.urlAfterRedirects === '/user-dashboard/';
       }
     });
   }
@@ -66,5 +66,17 @@ export class UserDashboardComponent implements OnInit {
     if (!target.closest('.side-menu') && !target.closest('.hamburger-menu')) {
       this.sideMenuOpen = false;
     }
+  }
+
+  // Add method to handle navigation
+  navigateTo(route: string) {
+    this.router.navigate([`/user-dashboard/${route}`]);
+    this.sideMenuOpen = false; // Close side menu after navigation on mobile
+    console.log(`Navigating to: /user-dashboard/${route}`); // Add this for debugging
+  }
+
+  // Add click handlers for cards
+  onCardClick(route: string) {
+    this.navigateTo(route);
   }
 }

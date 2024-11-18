@@ -1,75 +1,148 @@
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
 .content-container {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.video-player {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 15px;
+}
+
+.video-player video {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.video-player video:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.nav-button {
+  background: linear-gradient(145deg, #007bff, #0056b3);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+.feedback-button {
+  background: linear-gradient(145deg, #28a745, #218838);
+}
+
+.feedback-button:hover {
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    margin: 10px;
     padding: 20px;
-    background-color: #98c1e7;
-    border-radius: 8px;
-    max-width: 600px; /* Adjusted max-width */
-    margin: 0 auto;
-  }
-  
-  .module-header {
-    text-align: center;
-    margin-bottom: 10px; /* Reduced margin */
-  }
-  
-  .module-header h2 {
-    font-size: 20px; /* Adjusted font size */
-    color: #333;
-  }
-  
-  .video-player {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .video-player video {
-    width: 100%; /* Set video to fit container width */
-    max-width: 500px; /* Set maximum width for video */
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .navigation-buttons {
-    display: flex;
-    justify-content: space-between;
   }
   
   .nav-button {
-    background-color: #007bff;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center; /* Changed from space-between to center */
+  gap: 10px; /* Add space between buttons */
+}
+
+/* Remove .prev-button styles since we're not using it anymore */
+
+.next-button {
+  margin-left: 0; /* Remove margin since we're using gap */
+}
+
+.nav-button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 8px 16px; /* Adjusted padding */
+  cursor: pointer;
+  font-size: 14px; /* Adjusted font size */
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
+
+.prev-button {
+  margin-right: auto;
+}
+
+.next-button {
+  margin-left: auto;
+}
+
+.feedback-button {
+    background-color: #28a745; /* Green background for feedback */
     border: none;
     border-radius: 5px;
     color: #fff;
-    padding: 8px 16px; /* Adjusted padding */
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 14px; /* Adjusted font size */
+    font-size: 16px;
+    font-weight: bold;
     transition: background-color 0.3s ease;
   }
   
-  .nav-button:hover {
-    background-color: #0056b3;
+  .feedback-button:hover {
+    background-color: #218838;
   }
-  
-  .prev-button {
-    margin-right: auto;
-  }
-  
-  .next-button {
-    margin-left: auto;
-  }
-  
-  .feedback-button {
-      background-color: #28a745; /* Green background for feedback */
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    
-    .feedback-button:hover {
-      background-color: #218838;
-    }
-    
   

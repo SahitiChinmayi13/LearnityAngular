@@ -13,67 +13,73 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-admin-progresstracking',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './admin-progresstracking.component.html',
   styleUrl: './admin-progresstracking.component.css'
 })
 export class AdminProgresstrackingComponent {
-  constructor(private userService:UserService,
-    private courseService:CourseService,
-    private feedbackService:FeedbackService,
-    private progressService:ProgressService)
-    {this.fetchUsers();
-      this.fetchCourses();
-      this.fetchFeedbackLength();}
-  users:User[]=[]
-  user:User=new User();
-  courses:Course[]=[]
-  progress:Progress=new Progress();
-  course:Course=new Course();
-  feedbacklength=0
+  constructor(private userService: UserService,
+    private courseService: CourseService,
+    private feedbackService: FeedbackService,
+    private progressService: ProgressService) {
+    this.fetchUsers();
+    this.fetchCourses();
+    this.fetchFeedbackLength();
+  }
+  users: User[] = []
+  user: User = new User();
+  courses: Course[] = []
+  progress: Progress = new Progress();
+  course: Course = new Course();
+  feedbacklength = 0
   totalUsers = 0;
-  id=0
-  totalCourses=0;
+  id = 0
+  totalCourses = 0;
   enrolledStudents = 1178;
   avgWatchingTime = '120 mins';
   completedStudents = 937;
-  name=""
-  boo:boolean=true;
+  name = ""
+  boo: boolean = true;
 
   ngOnInit(): void {
-    
   }
-  fetchUsers(){
-    this.userService.getUsers().subscribe((data:User[])=>{
-      console.log(data);
-      this.users=data;
-      this.totalUsers=this.users.length;
-    })
-  }
-  fetchFeedbackLength(){
-    this.feedbacklength=this.feedbackService.getFeedbackLength()
-  }
-  fetchCourses(){
-    this.courseService.fetchAll().subscribe((data)=>{
-      this.courses=data;
-      this.totalCourses=this.courses.length;
-    })
-  }
-  search(id:number){
 
-    this.userService.getUserById(id).subscribe((data)=>{
-      this.user=data;
+  fetchUsers() {
+    this.userService.getUsers().subscribe((data: User[]) => {
+      console.log(data);
+      this.users = data;
+      this.totalUsers = this.users.length;
+    })
+  }
+
+  // Updated this method to properly handle the Observable
+  fetchFeedbackLength() {
+    this.feedbackService.getFeedbackLength().subscribe(
+      (length: number) => {
+        this.feedbacklength = length;
+      }
+    );
+  }
+
+  fetchCourses() {
+    this.courseService.fetchAll().subscribe((data) => {
+      this.courses = data;
+      this.totalCourses = this.courses.length;
+    })
+  }
+
+  search(id: number) {
+    this.userService.getUserById(id).subscribe((data) => {
+      this.user = data;
       console.log(this.user)
     })
-    this.userService.getCourseByUserId(id).subscribe((data)=>{
-      this.course=data;
+    this.userService.getCourseByUserId(id).subscribe((data) => {
+      this.course = data;
       console.log(this.course)
     })
-    this.userService.getUserProgress(id).subscribe((data)=>{
-      this.progress=data;
+    this.userService.getUserProgress(id).subscribe((data) => {
+      this.progress = data;
       console.log(this.progress)
     })
   }
-
-
 }

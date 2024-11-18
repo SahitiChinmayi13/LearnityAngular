@@ -1,98 +1,242 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-  }
-  
-  .feedback-container {
-    padding: 20px;
-    background-color: #77aad3;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 20px auto;
-    box-shadow: none; /* Removed box-shadow for a cleaner look */
-  }
-  
-  .course-info {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.feedback-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 0.5s ease;
+}
+
+.feedback-header {
     text-align: center;
-    margin-bottom: 15px;
-  }
-  
-  .course-info h1 {
-    font-size: 24px;
-    color: #333;
-    margin: 0;
-  }
-  
-  .course-info p {
-    font-size: 16px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.feedback-header h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.feedback-header p {
     color: #666;
-  }
-  
-  .feedback-header {
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
-  .feedback-header h2 {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  .rating-section {
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
-  .stars {
-    font-size: 24px;
-    color: #ccc;
-    cursor: pointer;
-  }
-  
-  .star.filled {
-    color: #ffcc00;
-  }
-  
-  .rating-text {
-    font-size: 18px;
-    color: #333;
-  }
-  
-  .review-section {
-    margin-bottom: 15px;
-  }
-  
-  .form-control {
+    font-size: 1.1rem;
+}
+
+/* Course Selection */
+.course-selection {
+    margin-bottom: 2rem;
+}
+
+.course-selection label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.course-selection select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-  }
-  
-  .input-section {
-    margin-bottom: 15px;
-  }
-  
-  .submit-button {
+    padding: 0.8rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #2c3e50;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.course-selection select:focus {
+    outline: none;
+    border-color: #00c6ff;
+    box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.1);
+}
+
+/* Course Info */
+.course-info {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    animation: slideDown 0.3s ease;
+}
+
+.course-info h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.course-info p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Rating Section */
+.rating-section {
     text-align: center;
-  }
-  
-  .submit-button button {
-    background-color: #007bff;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.rating-section label {
+    display: block;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.star {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #ddd;
+    transition: all 0.3s ease;
+}
+
+.star:hover {
+    transform: scale(1.2);
+}
+
+.star.filled {
+    color: #ffd700;
+    animation: starPop 0.3s ease;
+}
+
+.rating-text {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* Feedback Text */
+.feedback-text {
+    margin-bottom: 2rem;
+}
+
+.feedback-text label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.feedback-text textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.feedback-text textarea:focus {
+    outline: none;
+    border-color: #00c6ff;
+    box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.1);
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.button-group button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn {
+    background: #f8f9fa;
+    border: none;
+    color: #666;
+}
+
+.cancel-btn:hover {
+    background: #e9ecef;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
     border: none;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-button button:hover {
-    background-color: #0056b3;
-  }
-  
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 114, 255, 0.2);
+}
+
+.submit-btn:disabled {
+    background: #e9ecef;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes starPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+
+    .stars {
+        font-size: 2rem;
+    }
+}

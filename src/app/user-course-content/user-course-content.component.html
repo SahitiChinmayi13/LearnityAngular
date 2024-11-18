@@ -1,26 +1,18 @@
 
 <body>
-    <div class="content-container">
-      <!-- Module Header -->
-      <div class="module-header">
-        <h2>Module {{ currentModule }} of {{ totalModules }}</h2>
-      </div>
-    
-      <!-- Video Player -->
-      <div class="video-player">
-        <video src="/assets/videoplayback.mp4" controls poster="/assets/thumbnail.jpg"></video>
-      </div>
-    
-      <!-- Navigation Buttons -->
-      <div class="navigation-buttons">
-        <button class="nav-button prev-button" (click)="goToPreviousModule()">Previous Module</button>
-        <div class="navigation-buttons">
-          <button *ngIf="currentModule < totalModules" class="nav-button next-button" (click)="goToNextModule()">Next Module</button>
-
-        <button *ngIf="currentModule === totalModules" class="nav-button feedback-button" [routerLink]="['/userdashboard/userfeedback']">Feedback</button>
-        </div>
-      </div>
+  
+    <!-- Video Player -->
+    <div class="video-player">
+      <video controls>
+        <source src="/assets/usercourse1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
-  </body>
   
-  
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+      <button *ngIf="currentModule < totalModules" class="nav-button next-button" (click)="goToNextModule()">Next Module</button>
+      <button *ngIf="currentModule === totalModules" class="nav-button feedback-button" [routerLink]="['/userdashboard/userfeedback']">Feedback</button>
+    </div>
+</body>
+

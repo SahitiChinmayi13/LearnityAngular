@@ -1,39 +1,51 @@
 <div class="container">
-  <!-- Background Video -->
   <video autoplay muted loop class="background-video">
     <source src="assets/bgvideo.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-  <!-- Login Form Section -->
-  <div class="login-section">
+  <div class="login-section animate-in">
     <h1>Welcome to Learnity</h1>
-    <p>Please sign in to access your courses and learning materials.</p>
+    <p class="subtitle">Please sign in to access your courses and learning materials.</p>
+    
     <form #loginForm="ngForm" class="login-form">
-      <label for="username">Email or Username:</label>
-      <div class="input-container">
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter your email or username"
-          [(ngModel)]="username"
-          required
-        />
+      <div class="form-group">
+        <label for="username">Email or Username</label>
+        <div class="input-container">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your email or username"
+            [(ngModel)]="username"
+            required
+            [class.input-filled]="username"
+          />
+          <span class="input-focus-border"></span>
+        </div>
       </div>
-      <label for="password">Password:</label>
-      <div class="input-container">
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          [(ngModel)]="password"
-          required
-        />
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-container">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            required
+            [class.input-filled]="password"
+          />
+          <span class="input-focus-border"></span>
+        </div>
       </div>
-      <button type="submit" (click)="onLogin()">Sign In</button>
+
+      <button type="submit" (click)="onLogin()" [disabled]="!loginForm.form.valid">
+        <span>Sign In</span>
+      </button>
     </form>
-    <p *ngIf="loginError" class="error-message">{{ loginError }}</p>
+    
+    <p *ngIf="loginError" class="error-message animate-shake">{{ loginError }}</p>
   </div>
 </div>

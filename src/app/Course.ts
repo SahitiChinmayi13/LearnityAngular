@@ -1,5 +1,5 @@
 export class Course{
-    course_id!:Number;
+    course_id!:number;
     title!:String;
     description!:String;
     duration!:String;

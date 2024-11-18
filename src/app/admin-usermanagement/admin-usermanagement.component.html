@@ -1,48 +1,89 @@
-<!-- Main Content -->
 <div class="main-content">
+    <!-- Header Section -->
     <div class="header">
-        <div class="header-left">
-            <h2>User management</h2>
+        <div class="header-title">
+            <h2>User Management</h2>
+            <p>Manage and monitor user accounts</p>
         </div>
-        <div class="header-right">
-            <i class="fas fa-bell"></i>
+        <div class="header-actions">
+            <button class="action-btn search-btn" [routerLink]="['/admindashboard/finduser']">
+                <i class="fas fa-search"></i>
+                Find User
+            </button>
+            <button class="action-btn add-btn" [routerLink]="['/admindashboard/adduser']">
+                <i class="fas fa-plus"></i>
+                Add User
+            </button>
         </div>
     </div>
 
-    <!-- User Management Table -->
-    <div class="table-container">
-        <div class="filter-section">
-            <button class="filter-button" [routerLink]="['/admindashboard/finduser']"><i class="fas fa-filter"></i> Find by id</button>
-            <button class="add-user-button" [routerLink]="['/admindashboard/adduser']">+ Add user</button>
+    <!-- Users Table Card -->
+    <div class="table-card">
+        <div class="table-responsive">
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="th-content">
+                                <span>USER ID</span>
+                                <i class="fas fa-sort"></i>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th-content">
+                                <span>FULLNAME</span>
+                                <i class="fas fa-sort"></i>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th-content">
+                                <span>USERNAME</span>
+                                <i class="fas fa-sort"></i>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th-content">
+                                <span>EMAIL</span>
+                                <i class="fas fa-sort"></i>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th-content">
+                                <span>DESIGNATION</span>
+                                <i class="fas fa-sort"></i>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of paginatedUsers" class="table-row">
+                        <td>{{user.id}}</td>
+                        <td>{{user.fullName}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <span class="designation-badge">{{user.designation}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <table class="user-table">
-            <thead>
-                <tr>
-                    <th>USER ID</th>
-                    <th>FULLNAME</th>
-                    <th>USERNAME</th>
-                    <th>EMAIL</th>
-                    <th>DESIGNATION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of paginatedUsers">
-                    <td>{{user.id}}</td>
-                    <td>{{ user.fullName }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.designation }}</td>
-                </tr>
-            </tbody>
-        </table>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="paginatedUsers.length === 0">
+            <p>No users found. Add users to get started.</p>
+        </div>
 
         <!-- Pagination -->
-        <div class="pagination">
-            <button class="page-button" (click)="prevPage()" [disabled]="currentPage === 0">&lt;</button>
-            <button class="page-button" (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= users.length">&gt;</button>
+        <div class="pagination" *ngIf="paginatedUsers.length > 0">
+            <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 0">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="page-info">Page {{currentPage + 1}}</span>
+            <button class="page-btn" (click)="nextPage()" 
+                    [disabled]="(currentPage + 1) * itemsPerPage >= users.length">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </div>
-    <!-- <div class="fetch-button-container">
-        <button class="fetch-button" (click)="fetch()">Fetch All Users</button>
-    </div> -->
 </div>

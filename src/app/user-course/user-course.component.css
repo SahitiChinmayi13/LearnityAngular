@@ -1,73 +1,116 @@
 .course-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .course-card {
-    background-color: #dee7e7; /* White background for the card */
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow for a dimmer glow */
-    border: 2px solid #EEFFFF; /* Border color matching the background */
-    position: relative; /* Allows positioning of the button */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .course-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
+
 .course-card h3 {
-    margin-top: 0;
-    font-family: 'Arial', sans-serif; /* Update font family */
-    font-size: 20px;
-    color: #333; /* Text color for the course title */
+    margin: 0 0 15px 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .course-card p {
-    color: #666; /* Grey text color */
+    color: #5a6c7d;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 15px;
 }
 
 .course-info {
     display: flex;
     align-items: center;
-    gap: 15px;
-    font-size: 14px;
-    margin-bottom: 15px; /* Space between info and button */
+    gap: 20px;
+    font-size: 15px;
+    margin-bottom: 25px;
+    padding: 10px 15px;
+    background: rgba(0, 123, 255, 0.05);
+    border-radius: 10px;
 }
 
 .course-info .icon {
-    font-size: 16px; /* Adjust icon size */
-    color: #007bff; /* Color for the icons */
+    color: #007bff;
+    font-size: 18px;
 }
 
 .course-info .modules,
 .course-info .time {
-    color: #555; /* Updated text color for modules and time */
-}
-
-.course-info .time {
+    color: #4a5568;
     display: flex;
     align-items: center;
-}
-
-.course-info .time i {
-    margin-right: 5px; /* Space between icon and text */
+    gap: 8px;
 }
 
 .start-button {
-    background-color: #EEFFFF; /* Background color matching the content */
+    background: linear-gradient(145deg, #007bff, #0056b3);
     border: none;
-    border-radius: 5px;
-    color: #333; /* Text color for the button */
-    padding: 10px 15px;
+    border-radius: 8px;
+    color: #fff;
+    padding: 12px 24px;
     cursor: pointer;
     font-size: 16px;
-    font-family: 'Arial', sans-serif;
-    transition: background-color 0.3s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
 }
 
 .start-button:hover {
-    background-color: #cce5ff; /* Slightly darker shade for hover effect */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .course-container {
+        padding: 15px;
+    }
+
+    .course-card {
+        padding: 20px;
+    }
+
+    .course-info {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .course-card h3 {
+        font-size: 20px;
+    }
 }
