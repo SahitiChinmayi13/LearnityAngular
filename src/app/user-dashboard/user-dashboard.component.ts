@@ -28,7 +28,7 @@ export class UserDashboardComponent implements OnInit {
     private logins: UserService,
     private router: Router
   ) {
-    this.username = this.logins.getUsername();
+    this.username = sessionStorage.getItem("username") || ""; 
     this.findUser(this.username);
   }
 
@@ -75,8 +75,17 @@ export class UserDashboardComponent implements OnInit {
     console.log(`Navigating to: /user-dashboard/${route}`); // Add this for debugging
   }
 
+  navigateToCourseExplorer(route:string){
+    this.router.navigate([`/${route}`]);
+    this.sideMenuOpen = false; 
+  }
+
   // Add click handlers for cards
   onCardClick(route: string) {
     this.navigateTo(route);
+  }
+
+  toggleClick(){
+    
   }
 }

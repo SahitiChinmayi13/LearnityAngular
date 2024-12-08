@@ -5,13 +5,14 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Course } from './Course';
 import { Progress } from './Progress';
 import { AuthService } from './auth.service';
+import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   username: string = '';
   user:User=new User;
-  private apiUrl = "http://localhost:9999/admin"
+  private apiUrl = "http://localhost:8081/user"
   
    constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -22,11 +23,13 @@ export class UserService {
        return throwError('No token found');
      }
  
+     const authToken=localStorage.getItem("authToken")
+     const docoded=jwtDecode(authToken?authToken:"")
      const headers = new HttpHeaders({
        'Authorization': `Bearer ${token}`
      });
  
-     return this.http.get<any>(`${this.apiUrl}/username/${userId}`, { headers }).pipe(
+     return this.http.get<any>(`http://localhost:8081/user/username/${docoded.sub}`, { headers }).pipe(
        map(response => response),
        catchError(error => {
          console.error('Error fetching user details', error);
@@ -64,7 +67,7 @@ export class UserService {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-      return this.http.post<any>("http://localhost:9999/auth/signup", user, { headers }).pipe(
+      return this.http.post<any>("http://localhost:8081/auth/signup", user, { headers }).pipe(
         map(response => {return response}),
         catchError(error => {
           console.error('Error creating user', error);
@@ -91,6 +94,19 @@ export class UserService {
     );
   }
 
+  searchUserByUsername(username:string):Observable<any>{
+    const token = this.authService.getToken();
+     if (!token) {
+       return throwError('No token found');
+     }
+ 
+     const headers = new HttpHeaders({
+       'Authorization': `Bearer ${token}`
+     });
+
+    return this.http.get(`http://localhost:8081/user/username/${username}`, { headers })
+  }
+
   getUserRoleById(username:string):Observable<any>{
     const token = this.authService.getToken();
      if (!token) {
@@ -110,6 +126,7 @@ export class UserService {
   }
   setUsername(username: string) {
     this.username = username;
+    sessionStorage.setItem("username",username)
   }
 
   getUsername(): string {
@@ -131,11 +148,13 @@ export class UserService {
      if (!token) {
        return throwError('No token found');
      }
- 
+     const authToken=localStorage.getItem("authToken")
+     const decoded=jwtDecode(authToken?authToken:"")
+
      const headers = new HttpHeaders({
        'Authorization': `Bearer ${token}`
      });
-     return this.http.get<any>(`${this.apiUrl}/username/${username}`, { headers }).pipe(
+     return this.http.get<any>(`http://localhost:8081/user/username/${decoded.sub}`, { headers }).pipe(
       map(response => response),
       catchError(error => {
         console.error('Error fetching users details', error);

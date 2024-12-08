@@ -1,0 +1,24 @@
+<div class="course-management-container">
+    <div class="header">
+        <h2>Your Courses</h2>
+        
+    </div>
+    
+    <div class="course-cards">
+        <div class="course-card" *ngFor="let course of courses">
+            <p class="course-id">#{{ course.course_id }}</p>
+            <h3>{{ course.title }}</h3>
+            <h5>{{ course.description }}</h5>
+            <div class="course-info">
+                <span><i class="fas fa-clock"></i> {{ course.duration }} hours</span>
+                <span><i class="fas fa-layer-group"></i> {{ course.module }} modules</span>
+            </div>
+            <div class="card-buttons">
+                <button class="learn-button" (click)="navigateTo('course-landing')">
+                    <i class="fas fa-trash"></i>
+                   Start Learning
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>

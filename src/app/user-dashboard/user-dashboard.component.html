@@ -5,9 +5,13 @@
 <!-- Top Navigation Bar -->
 <nav class="top-nav">
   <!-- Hamburger Menu and 'MENU' Text -->
+  <!-- <div class="hamburger-menu" (click)="toggleSideMenu()">
+    &#9776;
+    <button class="menu-text" >MENU</button>
+  </div> -->
   <div class="hamburger-menu" (click)="toggleSideMenu()">
-    &#9776; <!-- Hamburger Icon -->
-    <span class="menu-text">MENU</span>
+    <span class="hamburger-icon" (click)="toggleClick()">&#9776;</span>
+    <button class="menu-text" (click)="toggleClick()">MENU</button>
   </div>
 
   <!-- Logo placed between MENU and Search Bar -->
@@ -24,12 +28,12 @@
 
   <!-- User Avatar and Username on the right -->
   <div class="user-details">
-    <img src="assets/avatar.webp" alt="User Avatar" class="avatar" />
+    <img src="assets/usericon.png" alt="User Avatar" class="avatar" />
     <span class="user-name">{{ name }}</span>
     <!-- User Dropdown (appears only on hover) -->
     <div class="user-dropdown">
       <ul>
-        <li><a href="#" class="profile-button">My Profile</a></li>
+        <li><a href="/user-profile" class="profile-button">My Profile</a></li>
         <li><a href="#" class="certifications-button">View Certifications</a></li>
         <!-- Log Out Button with Angular's RouterLink for navigation -->
         <li><a class="logout-button" routerLink="/login" routerLinkActive="active">Logout</a></li>
@@ -46,7 +50,12 @@
   <h1>Welcome {{ name }}!</h1>
   <p class="tagline">What will you learn today?</p>
   <div class="dashboard-stats">
-    <div class="stat-card" (click)="navigateTo('courses')">
+    <div class="stat-card" (click)="navigateToCourseExplorer('course-explorer')">
+      <i class="fas fa-search"></i>
+      <h3>Explore</h3>
+      <p>Explore Courses</p>
+    </div>
+    <div class="stat-card" (click)="navigateToCourseExplorer('courses-enrolled')">
       <i class="fas fa-book-open"></i>
       <h3>My Courses</h3>
       <p>Continue Learning</p>

@@ -80,6 +80,14 @@ export class CourseService {
     );
   }
 
+  enrollCourse(courseId:number,userId:number){
+    return this.http.post("http://localhost:8081/courses/enroll",{courseId,userId})
+  }
+
+  enrolledCourses(userId:number){
+    return this.http.get(`http://localhost:8081/courses/user/${userId}/enrolled`)
+  }
+
   // Helper methods for managing selected course
   setSelectedCourse(course: Course) {
     this.selectedCourse = course;

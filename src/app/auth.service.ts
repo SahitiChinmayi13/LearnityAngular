@@ -16,7 +16,7 @@ interface LoginResponse {
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:9999/auth/login';
+  private apiUrl = 'http://localhost:8081/auth/login';
   private tokenKey = 'authToken';
   private expiresAtKey = 'expiresAt';
   private role = '';

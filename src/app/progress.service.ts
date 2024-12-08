@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 export class ProgressService {
   progress:Progress=new Progress()
   currentModule=0
-  private url = "http://localhost:9999/progress"
+  private url = "http://localhost:8081/progress"
   constructor(private http:HttpClient, private authService: AuthService) {}
 
   createProgress(progress:Progress):Observable<Progress>{

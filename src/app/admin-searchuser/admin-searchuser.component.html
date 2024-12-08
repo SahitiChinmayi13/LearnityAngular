@@ -2,11 +2,11 @@
     <h2>Find User</h2>
     <form  #searchForm="ngForm">
       <div class="form-group">
-        <label for="search">Search by Id</label>
-        <input type="text" id="search" name="search" [(ngModel)]="id" required>
+        <label for="search">Search by Username</label>
+        <input type="text" id="search" name="search" [(ngModel)]="username" required>
       </div>
       <!-- <button type="submit" [disabled]="!searchForm.form.valid">Search</button> -->
-      <button type="submit" (click)="onSearch(id)">Search</button>
+      <button type="submit" (click)="searchUserByUsername(username)">Search</button>
 
     </form>
   

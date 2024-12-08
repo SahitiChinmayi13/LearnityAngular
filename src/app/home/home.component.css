@@ -16,7 +16,7 @@ header {
     display: flex;
     justify-content: space-between; /* Space out logo and nav items */
     align-items: center; /* Vertically align the items */
-    padding: 20px 40px; /* Increased padding for a longer navbar */
+    padding: 1px 10px; /* Increased padding for a longer navbar */
     position: fixed; /* Fix the nav bar to the top */
     top: 0;
     left: 0;
@@ -143,15 +143,17 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow: hidden;
     width: 100vw;
-    height: 100vh;
+    height: 86.3vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    flex-direction: column; /* Stack content vertically */
-    margin-top: 80px; /* Push the content down to start below the nav bar */
+    flex-direction: column; 
+    margin-top: 80px; 
     padding-top: 0; /* Ensure there's no padding pushing content down */
+    
 }
 
 /* Overlay for dark effect */
@@ -219,10 +221,32 @@ header {
     font-family: 'Inter', sans-serif;
 }
 
+.signup-button{
+    color:#fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    margin-left: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    outline: none;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border: 2px solid #057a87;
+}
+
 /* Hover effect for the login button */
 .login-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+.signup-button:hover{
+
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background-color: #3498db;
 }
 
 /* Keyframe animation for sliding up */

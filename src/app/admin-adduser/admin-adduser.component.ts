@@ -5,14 +5,14 @@ import { UserService } from '../user.service';
 import { RouterModule, Router } from '@angular/router';
 import { EnrolmentService } from '../enrolment.service';
 import { Enrolment } from '../Enrolment';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ProgressService } from '../progress.service';
 import { Progress } from '../Progress';
 
 @Component({
   selector: 'app-admin-adduser',
   standalone: true,
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './admin-adduser.component.html',
   styleUrls: ['./admin-adduser.component.css'] // Corrected to 'styleUrls'
 })

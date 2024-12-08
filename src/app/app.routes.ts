@@ -19,11 +19,19 @@ import { AdminFeedbackmanagementComponent } from './admin-feedbackmanagement/adm
 import { AdminAdduserComponent } from './admin-adduser/admin-adduser.component';
 import { AdminAddcourseComponent } from './admin-addcourse/admin-addcourse.component';
 import { AdminSearchuserComponent } from './admin-searchuser/admin-searchuser.component';
+import { SignupComponent } from './singup/singup.component';
+import { CourseExplorerComponent } from './course-explorer/course-explorer.component';
+import { CoursesEnrolledComponent } from './courses-enrolled/courses-enrolled.component';
+import { CourseLandingComponent } from './course-landing/course-landing.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
     { path: 'login', component: LoginComponent },
+    {path:'signup',component:SignupComponent},
+    {path:'user-profile',component:UserProfileComponent},
+    {path:'course-explorer',component:CourseExplorerComponent},
     {
         path: 'user-dashboard',
         component: UserDashboardComponent,
@@ -33,9 +41,12 @@ export const routes: Routes = [
           { path: 'progress', component: UserProgressComponent },
           { path: 'feedback', component: UserFeedbackComponent },
           { path: 'usercoursecontent', component: UserCourseContentComponent },
-          { path: 'course-content/:id', component: CourseVideoComponent }
+          { path: 'course-content/:id', component: CourseVideoComponent },
+          
         ]
     },
+    {path: 'course-landing', component:CourseLandingComponent},
+    {path:'courses-enrolled',component:CoursesEnrolledComponent},
     {path:'admindashboard',component:AdminDashboardComponent,
         children:[
             {path:"",component:AdminIntroductionComponent},
